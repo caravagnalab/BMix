@@ -3,3 +3,8 @@
 S3method(plot,bmix)
 S3method(print,bmix)
 export(bmixfit)
+export(plot_clusters)
+export(plot_density)
+export(plot_model_selection)
+export(plot_tarone)
+import(ggplot2)
