@@ -20,7 +20,7 @@ bmixfit = function(
 )
 {
   grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
-  grid = grid[ grid$B + grid$BB > 0,  ]
+  grid = grid[ grid$B + grid$BB > 0, , drop = FALSE]
   grid$ICL = NA
 
   best.score = .Machine$integer.max
