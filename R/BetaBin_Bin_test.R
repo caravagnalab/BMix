@@ -34,7 +34,7 @@ tsampler = function(n, pi1, p1, p2, c)
     xlim(0, 1) +
     labs(
       title = paste0('N = (', np1, ', ', np2, '), C = ', c),
-      subtitle = paste0('Sk: ', e1071::skewness(df$x/df$y))
+      # subtitle = paste0('Sk: ', e1071::skewness(df$x/df$y))
       ) +
     guides(fill = FALSE) +
     geom_vline(xintercept = p1) +
