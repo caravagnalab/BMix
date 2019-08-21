@@ -16,7 +16,8 @@ bmixfit = function(
   K.Binomials = 0:2,
   K.BetaBinomials = 0:2,
   epsilon = 1e-8,
-  samples = 1
+  samples = 1,
+  entropy = TRUE
 )
 {
   grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
@@ -45,7 +46,7 @@ bmixfit = function(
         #     "K =", grid$B[i], "Binomials + K =", grid$BB[i], "Beta-Binomials: ")
 
         # try the EM
-        fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon)
+        fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, entropy = entropy)
 
         # if you get here, it will exit
         success = TRUE

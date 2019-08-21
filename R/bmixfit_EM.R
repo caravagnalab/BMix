@@ -2,7 +2,8 @@
 bmixfit_EM = function(
   data,
   K = c(2, 2),
-  epsilon = 1e-8
+  epsilon = 1e-8,
+  entropy = TRUE
 )
 {
   stopifnot(ncol(data) >= 2)
@@ -181,8 +182,10 @@ bmixfit_EM = function(
   BIC = 2 * NLL + log(N) * npar
   entropy = -sum(z_nk * log(z_nk), na.rm = TRUE) # will be 0 for w=1
 
-  # Score each model via ICL
-  ICL = BIC + entropy
+  # Score each model via ICL - otherwise BIC
+  ICL = BIC
+  if(entropy) ICL = ICL + entropy
+
 
   fit$K = K
   fit$B.params = B.params

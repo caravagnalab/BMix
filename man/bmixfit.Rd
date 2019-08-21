@@ -5,7 +5,7 @@
 \title{Title}
 \usage{
 bmixfit(data, K.Binomials = 0:2, K.BetaBinomials = 0:2,
-  epsilon = 1e-08, samples = 1)
+  epsilon = 1e-08, samples = 1, entropy = TRUE)
 }
 \arguments{
 \item{samples}{}
