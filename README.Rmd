@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![Travis build status](https://travis-ci.org/caravagn/bmix.svg?branch=master)](https://travis-ci.org/caravagn/bmix)
+[![Travis build status](https://travis-ci.org/caravagn/BMix.svg?branch=master)](https://travis-ci.org/caravagn/BMix)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
@@ -28,7 +28,7 @@ Cancer Evolution analyses; see more [about evoverse](https://caravagn.github.io/
 
 #### Help and support
 
-`BMix` has its own webpage at [GitHub pages](https://caravagn.github.io/bmix/).
+`BMix` has its own webpage at [GitHub pages](https://caravagn.github.io/BMix/).
 
 -----
 
@@ -39,7 +39,7 @@ You can install the released version of `BMix` from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("caravagn/bmix")
+devtools::install_github("caravagn/BMix")
 ```
 
 -----
