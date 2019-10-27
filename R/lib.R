@@ -1,9 +1,3 @@
-
-
-
-
-
-
 #### Internal functions
 
 .MLE_BB = function(data) {
@@ -17,7 +11,6 @@
 
   return(fit)
 }
-
 
 .NLLBetaBinMix = function(k, x, z_nk, pi)
 {
@@ -36,8 +29,6 @@
   return(f)
 }
 
-
-
 #### Aux function to do some classical tricks for numerical stability
 .log_sum_exp = function(x) {
   # Computes log(sum(exp(x))
@@ -47,7 +38,6 @@
   if (length(i) > 0) { s[i] <- offset }
   return(s)
 }
-
 
 .betaMV2AB = function(mu, var)
 {

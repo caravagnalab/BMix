@@ -2,14 +2,46 @@
 % Please edit documentation in R/bmixfit.R
 \name{bmixfit}
 \alias{bmixfit}
-\title{Title}
+\title{Fit a \code{Bmix} mixture}
 \usage{
 bmixfit(data, K.Binomials = 0:2, K.BetaBinomials = 0:2,
   epsilon = 1e-08, samples = 1, entropy = TRUE)
 }
 \arguments{
-\item{samples}{}
+\item{data}{A matrix or dataframe with two columns, the first one must represent
+the number of successes in the Binomial trials, the second the total number of
+trials.}
+
+\item{K.Binomials}{A vector of values that represents how many Binomial components
+should be fit to the data.}
+
+\item{K.BetaBinomials}{A vector of values that represents how many Beta-Binomial components
+should be fit to the data.}
+
+\item{epsilon}{The parameter that controls when the Expectation
+Maximization algorithm should stop. This is compared to the variation in the
+negative loglikelihood.}
+
+\item{samples}{Number of Expectation Maximization fits that should be computed per
+configuration of mixture.}
+
+\item{entropy}{If `FALSE`, then the entropy term from the Integrated Classification
+Likelihood is not included, and the model is then scored by the Bayesian Information
+Criterion.}
+}
+\value{
+Am object of class \code{bmix} that represents a fit mixture of this package.
 }
 \description{
-Title
+Fits a mixture of `k` components, where each component can be
+either a Binomial or a Beta-Binomial random variable. This function
+take as input two paramters that determine the possible numer of compoennets,
+for both distributions, and creates all possible input combinations to fit the model.
+
+The best mode is scored using the Integrated Classification Likelihood, an extension
+of the Bayesian Information Criterion. Through one parameters it is possible to
+switch to the Bayesian Information Criterion.
+
+Multiple fits can be computed, and a parameter controls when the Expectation
+Maximization algorithm should stop.
 }

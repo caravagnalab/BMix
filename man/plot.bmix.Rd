@@ -2,15 +2,19 @@
 % Please edit documentation in R/S3_methods_bmix.R
 \name{plot.bmix}
 \alias{plot.bmix}
-\title{Title}
+\title{Plot a \code{bmix} object.}
 \usage{
-\method{plot}{bmix}(fit, data, coverage = 100, annotation = NULL,
-  cex = 1, palette = "Set1", palette.heatmap = "Spectral",
-  alpha = 0.3, M.tarone = 1000)
+plot.bmix(x, data)
 }
 \arguments{
-\item{alpha}{}
+\item{x}{An object of class \code{bmix} that represents a fit.}
+
+\item{data}{The data used to compute the fit \code{x}.}
+}
+\value{
+A \code{cowplot} figure.
 }
 \description{
-Title
+Assemble a multi-panel plot using the plotting functions
+of the \code{Bmix} package, with default parameters.
 }

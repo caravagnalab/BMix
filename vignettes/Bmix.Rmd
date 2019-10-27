@@ -1,0 +1,74 @@
+---
+title: "Using BMix"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using BMix}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(BMix)
+```
+
+We generate some simple data, obtained from two Binomial mixture components with success probability $40\%$ and $70\%$, and mixing proportions $30\%$ and $70\%$; the number of trials is fixed to $100$.
+
+```{r}
+data = data.frame(
+  successes = c(
+    rbinom(300, 100, .4),  # First component - 300 points, peak at 0.4
+    rbinom(700, 100, .7)), # Second component - 700 points, peak at 0.7
+  trials = 100)
+
+print(head(data))
+```
+
+Fitting is done with function `bmixfit`, the default parameters test a number of configurations of Binomial and Beta-Binomial components
+```{r, warning=FALSE}
+# Default parameters
+x = bmixfit(data)
+```
+
+The fit is an object of class `bmix` which has S3 methods available.
+```{r, warning=FALSE}
+print(x)
+```
+
+Beware that in `Bmix` the input data is not stored inside the fit, so all the functions that require the data to make computations are required to receive the input data as a parameter. Do not change that data because the package is not doing any check about the input.
+
+You have getters to access the clusters (as `tibble`) and the fit parameters.
+```{r}
+# Augment data with cluster labels and latent variables
+Clusters(x, data)
+
+# Obtain for every fit component the mean and its overdispersion.
+# Binomial components have 0 overdispersion by definition.
+Parameters(x)
+```
+
+You can plot the clustering assignments (*hard clustering*).
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_clusters(x, data)
+```
+
+You can plot the density, in frequency space. For this a number of trials needs to be fixed; by default `BMix` takes the median number of trials in the input data, but you can decide to use any other interger number.
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_density(x, data)
+```
+
+You can visualise the result of the model selection grid as a heatmap; the best model is the one that minimizes the chosen score, which is by default the *Integrated Classification Likelihood*, an extension of the *Bayesian Information Criterion* that accounts for the entropy of the latent variables.
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_model_selection(x)
+```
+
+The S3 method `plot` assembles all these plots using the `cowplot` package.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+plot(x, data)
+```

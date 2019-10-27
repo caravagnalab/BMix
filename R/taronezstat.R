@@ -1,3 +1,4 @@
+# This is not exported yet, as I am not sure any of this makes sense
 
 taronezstat = function(cluster, fit, data, colour = 'black', M = 1000, cex =1)
 {
@@ -80,4 +81,20 @@ taronezstat = function(cluster, fit, data, colour = 'black', M = 1000, cex =1)
     guides(fill = FALSE) +
     theme_classic(base_size = 10 * cex)
   pl
+}
+
+plot_tarone = function(fit, data, M.tarone = 1000)
+{
+  if(fit$K[2] > 0) {
+    tpl = lapply(
+      colnames(fit$BB.params),
+      taronezstat,
+      data = data,
+      fit = fit,
+      colour = 'black',
+      M = M.tarone
+    )
+
+    tpl
+  }
 }

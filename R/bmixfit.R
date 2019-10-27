@@ -1,13 +1,38 @@
 
-#' Title
+#' Fit a \code{Bmix} mixture
 #'
-#' @param data
-#' @param K.Binomials
-#' @param K.BetaBinomials
-#' @param epsilon
-#' @param samples
+#' @description
 #'
-#' @return
+#' Fits a mixture of `k` components, where each component can be
+#' either a Binomial or a Beta-Binomial random variable. This function
+#' take as input two paramters that determine the possible numer of compoennets,
+#' for both distributions, and creates all possible input combinations to fit the model.
+#'
+#' The best mode is scored using the Integrated Classification Likelihood, an extension
+#' of the Bayesian Information Criterion. Through one parameters it is possible to
+#' switch to the Bayesian Information Criterion.
+#'
+#' Multiple fits can be computed, and a parameter controls when the Expectation
+#' Maximization algorithm should stop.
+#'
+#' @param data A matrix or dataframe with two columns, the first one must represent
+#' the number of successes in the Binomial trials, the second the total number of
+#' trials.
+#' @param K.Binomials A vector of values that represents how many Binomial components
+#' should be fit to the data.
+#' @param K.BetaBinomials  A vector of values that represents how many Beta-Binomial components
+#' should be fit to the data.
+#' @param epsilon The parameter that controls when the Expectation
+#' Maximization algorithm should stop. This is compared to the variation in the
+#' negative loglikelihood.
+#' @param samples Number of Expectation Maximization fits that should be computed per
+#' configuration of mixture.
+#' @param entropy If `FALSE`, then the entropy term from the Integrated Classification
+#' Likelihood is not included, and the model is then scored by the Bayesian Information
+#' Criterion.
+#'
+#' @return Am object of class \code{bmix} that represents a fit mixture of this package.
+#'
 #' @export
 #'
 #' @examples
@@ -46,7 +71,7 @@ bmixfit = function(
         #     "K =", grid$B[i], "Binomials + K =", grid$BB[i], "Beta-Binomials: ")
 
         # try the EM
-        fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, entropy = entropy)
+        fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, use_entropy = entropy)
 
         # if you get here, it will exit
         success = TRUE

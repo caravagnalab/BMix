@@ -2,13 +2,18 @@
 % Please edit documentation in R/S3_methods_bmix.R
 \name{print.bmix}
 \alias{print.bmix}
-\title{Title}
+\title{Print a \code{bmix} object.}
 \usage{
-\method{print}{bmix}(x)
+\method{print}{bmix}(x, ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{A \code{bmix} object.}
+
+\item{...}{S3 parameters.}
+}
+\value{
+Nothing, just print to screen some information about the mixture.
 }
 \description{
-Title
+Print to screen some information about the mixture.
 }

@@ -1,9 +1,9 @@
-
+# EM algorithm
 bmixfit_EM = function(
   data,
   K = c(2, 2),
   epsilon = 1e-8,
-  entropy = TRUE
+  use_entropy = TRUE
 )
 {
   stopifnot(ncol(data) >= 2)
@@ -184,7 +184,7 @@ bmixfit_EM = function(
 
   # Score each model via ICL - otherwise BIC
   ICL = BIC
-  if(entropy) ICL = ICL + entropy
+  if(use_entropy) ICL = ICL + entropy
 
 
   fit$K = K
@@ -197,6 +197,7 @@ bmixfit_EM = function(
   fit$BIC = BIC
   fit$NLL = NLL
   fit$entropy = entropy
+  fit$use_entropy = use_entropy
 
 
   class(fit) = "bmix"
