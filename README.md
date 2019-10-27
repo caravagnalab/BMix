@@ -4,7 +4,7 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/caravagn/bmix.svg?branch=master)](https://travis-ci.org/caravagn/bmix)
+status](https://travis-ci.org/caravagn/BMix.svg?branch=master)](https://travis-ci.org/caravagn/BMix)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
@@ -17,7 +17,7 @@ genome sequencing data of somatic mutations in diseases such as cancer.
 `BMix` fits these mixtures by maximum likelihood exploiting the
 Expectation Maximization algorithm. Model selection for the number of
 mixture components is carried out using the Integrated Classification
-Likelihood, and extension of the Bayesian Information Criterion that
+Likelihood, an extension of the Bayesian Information Criterion that
 accounts for the entropy of the latent variables.
 
 `BMix` is part of the `evoverse`, a package that gathers multiple R
@@ -38,7 +38,7 @@ You can install the released version of `BMix` from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("caravagn/bmix")
+devtools::install_github("caravagn/BMix")
 ```
 
 -----

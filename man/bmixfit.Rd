@@ -4,8 +4,8 @@
 \alias{bmixfit}
 \title{Fit a \code{Bmix} mixture}
 \usage{
-bmixfit(data, K.Binomials = 0:2, K.BetaBinomials = 0:2,
-  epsilon = 1e-08, samples = 1, entropy = TRUE)
+bmixfit(data, K.Binomials = 1:2, K.BetaBinomials = 0,
+  epsilon = 1e-08, samples = 2, entropy = TRUE)
 }
 \arguments{
 \item{data}{A matrix or dataframe with two columns, the first one must represent
@@ -13,10 +13,10 @@ the number of successes in the Binomial trials, the second the total number of
 trials.}
 
 \item{K.Binomials}{A vector of values that represents how many Binomial components
-should be fit to the data.}
+should be fit to the data.By default this parameter is set to `c(0:2)`.}
 
 \item{K.BetaBinomials}{A vector of values that represents how many Beta-Binomial components
-should be fit to the data.}
+should be fit to the data. By default this parameter is set to `0`.}
 
 \item{epsilon}{The parameter that controls when the Expectation
 Maximization algorithm should stop. This is compared to the variation in the
@@ -30,7 +30,7 @@ Likelihood is not included, and the model is then scored by the Bayesian Informa
 Criterion.}
 }
 \value{
-Am object of class \code{bmix} that represents a fit mixture of this package.
+An object of class \code{bmix} that represents a fit mixture of this package.
 }
 \description{
 Fits a mixture of `k` components, where each component can be
@@ -44,4 +44,13 @@ switch to the Bayesian Information Criterion.
 
 Multiple fits can be computed, and a parameter controls when the Expectation
 Maximization algorithm should stop.
+}
+\examples{
+# The same dataset used in the package vignette
+data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+
+# BMix fit with default parameters
+x = bmixfit(data)
+
+print(x)
 }

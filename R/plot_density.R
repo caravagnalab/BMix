@@ -20,6 +20,13 @@
 #' @export
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' plot_density(x, data)
 plot_density = function(x,
                         data,
                         trials = round(median(data[, 2]))

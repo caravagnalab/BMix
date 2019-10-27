@@ -12,10 +12,19 @@ Clusters(x, data)
 \item{data}{The data used to compute the fit \code{x}.}
 }
 \value{
-The input \code{data} augmented with a column for the cluster labels and the latent variables.
+The input \code{data} transformed into a tibble, augmented with a column for the cluster labels and the latent variables.
 }
 \description{
 This function extracts the clustering assignments
 and the latent variables from the fit. This function
 must receive in input exactly the same data used for the fit.
+}
+\examples{
+# The same dataset used in the package vignette
+data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+
+# BMix fit with default parameters
+x = bmixfit(data)
+
+Clusters(x, data)
 }

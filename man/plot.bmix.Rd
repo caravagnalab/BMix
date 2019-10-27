@@ -18,3 +18,12 @@ A \code{cowplot} figure.
 Assemble a multi-panel plot using the plotting functions
 of the \code{Bmix} package, with default parameters.
 }
+\examples{
+# The same dataset used in the package vignette
+data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+
+# BMix fit with default parameters
+x = bmixfit(data)
+
+plot.bmix(x, data)
+}

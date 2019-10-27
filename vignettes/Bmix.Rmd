@@ -30,7 +30,7 @@ data = data.frame(
 print(head(data))
 ```
 
-Fitting is done with function `bmixfit`, the default parameters test a number of configurations of Binomial and Beta-Binomial components
+Fitting is done with function `bmixfit`, the default parameters test a number of configurations of Binomial components, but sets to $0$ the number of Beta-Binomial components.
 ```{r, warning=FALSE}
 # Default parameters
 x = bmixfit(data)
@@ -70,5 +70,29 @@ plot_model_selection(x)
 
 The S3 method `plot` assembles all these plots using the `cowplot` package.
 ```{r, warning=FALSE, fig.height=3, fig.width=9}
+plot(x, data)
+```
+
+If you want to test the same model with only Beta-Binomial components you can run function `bmixfit` as follows.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+# Custom parameters
+x = bmixfit(data, 
+            K.Binomials = 0, 
+            K.BetaBinomials = 1:2)
+
+# Show outputs
+print(x)
+plot(x, data)
+```
+
+You can also decide to test models in which both type of components are present.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+# Custom parameters
+x = bmixfit(data, 
+            K.Binomials = 0:2, 
+            K.BetaBinomials = 0:2)
+
+# Show outputs
+print(x)
 plot(x, data)
 ```

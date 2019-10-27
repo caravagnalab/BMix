@@ -19,3 +19,12 @@ one row per component, a column for the mean of
 the mixture component and a column for its overdispersion.
 All the Binomial components have a fixed value of 0 for overdispersion..
 }
+\examples{
+# The same dataset used in the package vignette
+data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+
+# BMix fit with default parameters
+x = bmixfit(data)
+
+Parameters(x)
+}

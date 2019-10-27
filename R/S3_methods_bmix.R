@@ -9,6 +9,13 @@
 #' @export
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' print(x)
 print.bmix = function(x, ...)
 {
   cat("BMix model with K =", sum(x$K), "components:", x$K[1], "Binomials and", x$K[2], "Beta-Binomials.\n")
@@ -40,6 +47,13 @@ print.bmix = function(x, ...)
 #' @import cowplot
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' plot.bmix(x, data)
 plot.bmix = function(x, data)
 {
   cowplot::plot_grid(

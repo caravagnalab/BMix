@@ -15,6 +15,13 @@
 #' @export
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' Clusters(x, data)
 Clusters = function(x, data)
 {
   data$cluster = x$labels
@@ -38,6 +45,13 @@ Clusters = function(x, data)
 #' @export
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' Parameters(x)
 Parameters = function(x)
 {
   Bin = BBin = NULL

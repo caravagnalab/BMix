@@ -23,3 +23,12 @@ This functions plots the density of the fit, coloured
 according to the mixture components. This function
 must receive in input exactly the same data used for the fit.
 }
+\examples{
+# The same dataset used in the package vignette
+data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+
+# BMix fit with default parameters
+x = bmixfit(data)
+
+plot_density(x, data)
+}

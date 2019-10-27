@@ -15,6 +15,13 @@
 #' @export
 #'
 #' @examples
+#' # The same dataset used in the package vignette
+#' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+#'
+#' # BMix fit with default parameters
+#' x = bmixfit(data)
+#'
+#' plot_model_selection(x)
 plot_model_selection = function(x)
 {
   # Model selection heatmap
