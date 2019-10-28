@@ -151,12 +151,12 @@ of the <code>Bmix</code> package, with default parameters.</p>
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>successes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='fl'>30</span>, <span class='fl'>100</span>, <span class='fl'>.4</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span>(<span class='fl'>70</span>, <span class='fl'>100</span>, <span class='fl'>.7</span>)), <span class='kw'>trials</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
 <span class='co'># BMix fit with default parameters</span>
-<span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='bmixfit.html'>bmixfit</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; 
-#&gt; 	Total number of runs:  4 
+<span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='bmixfit.html'>bmixfit</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; <span style='color: #BBBBBB;background-color: #0000BB;'> [ BMix ~ Fitting data ] 
+#&gt; </span><span style='color: #000000;background-color: #BBBB00;'>Total number of runs: </span><span> 4 </span><span style='color: #000000;background-color: #BBBB00;'>
 #&gt; 
-#&gt;      Run #  | Samp. # |  Binom. | Beta-Binom. |      Conv. |        ICL
+#&gt; </span><span>     Run #  | Samp. # |  Binom. | Beta-Binom. |      Conv. |        ICL
 #&gt; ------------------------------------------------------------------------------
-#&gt;        1/4  |       1 |       1 |           0 | <span style='color: #00BB00;'>        OK</span><span> | </span><span style='color: #00BB00;'>1341.68391097726</span><span> *
+#&gt;        1/4  |       1 |       1 |           0 | </span><span style='color: #00BB00;'>        OK</span><span> | </span><span style='color: #00BB00;'>1341.68391097726</span><span> *
 #&gt;        2/4  |       2 |       1 |           0 | </span><span style='color: #00BB00;'>        OK</span><span> | 1341.69
 #&gt;        3/4  |       1 |       2 |           0 | </span><span style='color: #00BB00;'>        OK</span><span> | </span><span style='color: #00BB00;'>775.777552909558</span><span> *
 #&gt;        4/4  |       2 |       2 |           0 | </span><span style='color: #00BB00;'>        OK</span><span> | </span><span style='color: #00BB00;'>749.348239610444</span><span> *

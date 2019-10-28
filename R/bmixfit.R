@@ -59,7 +59,7 @@ bmixfit = function(
 
   best.score = .Machine$integer.max
 
-  pio::ppioHdr('BMix ~ Fitting data')
+  pio::pioHdr('BMix ~ Fitting data')
 
   pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
 
