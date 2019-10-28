@@ -58,6 +58,8 @@ UK*.
 
 <a class="github-button" href="https://github.com/caravagn" aria-label="Follow @caravagn on GitHub">Follow
 @caravagn</a>
+
 [![](https://img.shields.io/badge/Email-gcaravagn@gmail.com-seagreen.svg)](mailto:gcaravagn@gmail.com)
+[![](https://img.shields.io/badge/Github-caravagn-seagreen.svg)](https://github.com/caravagn)
 [![](https://img.shields.io/badge/Twitter-@gcaravagna-steelblue.svg)](https://twitter.com/gcaravagna)
 [![](https://img.shields.io/badge/Personal%20webpage-https://bit.ly/2kc9E6Y-red.svg)](https://sites.google.com/site/giuliocaravagna/)
