@@ -33,6 +33,7 @@
 #'
 #' @return An object of class \code{bmix} that represents a fit mixture of this package.
 #'
+#' @import pio
 #' @export
 #'
 #' @examples
@@ -58,7 +59,9 @@ bmixfit = function(
 
   best.score = .Machine$integer.max
 
-  cat("\n\tTotal number of runs: ", nrow(grid), '\n\n')
+  pio::ppioHdr('BMix ~ Fitting data')
+
+  pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
 
   cat(sprintf("%10s  | %7s |  %6s | %11s | %10s | %10s\n",
               "Run #", "Samp. #", "Binom.", "Beta-Binom.", "Conv.", "ICL" ))
