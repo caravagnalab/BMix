@@ -103,12 +103,12 @@
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data))</a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;   successes trials</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1        34    100</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2        32    100</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3        44    100</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 4        43    100</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1        31    100</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2        34    100</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3        45    100</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 4        33    100</span></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 5        39    100</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6        33    100</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6        47    100</span></a></code></pre></div>
 <p>Fitting is done with function <code>bmixfit</code>, the default parameters test a number of configurations of Binomial components, but sets to <span class="math inline">\(0\)</span> the number of Beta-Binomial components.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Default parameters</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">x =<span class="st"> </span><span class="kw"><a href="../reference/bmixfit.html">bmixfit</a></span>(data)</a>
@@ -117,35 +117,35 @@
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;      Run #  | Samp. # |  Binom. | Beta-Binom. |      Conv. |        ICL</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;        1/4  |       1 |       1 |           0 |         OK | 14138.1322345346 *</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;        2/4  |       2 |       1 |           0 |         OK | 14155.89</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;        3/4  |       1 |       2 |           0 |         OK | 7312.06378977691 *</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;        4/4  |       2 |       2 |           0 |         OK | 7433.652</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;        1/4  |       1 |       1 |           0 |         OK | 14163.9523317004 *</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;        2/4  |       2 |       1 |           0 |         OK | 14006.5632107227 *</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;        3/4  |       1 |       2 |           0 |         OK | 7330.14332825023 *</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;        4/4  |       2 |       2 |           0 |         OK | 7431.795</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  *** Best with ICL:  7312.064  </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  *** Best with ICL:  7330.143  </span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; BMix model with K = 2 components: 2 Binomials and 0 Beta-Binomials.</span></a>
 <a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; Binomials</span></a>
 <a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;     Bin 1     Bin 2 </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 0.6993340 0.3978126 </span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 0.6997593 0.3982941 </span></a>
 <a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; Beta-Binomials</span></a>
 <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; NULL</span></a>
 <a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; ICL: 7312.064</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; ICL: 7330.143</span></a></code></pre></div>
 <p>The fit is an object of class <code>bmix</code> which has S3 methods available.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(x)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; BMix model with K = 2 components: 2 Binomials and 0 Beta-Binomials.</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Binomials</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;     Bin 1     Bin 2 </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 0.6993340 0.3978126 </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 0.6997593 0.3982941 </span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Beta-Binomials</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; NULL</span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; ICL: 7312.064</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; ICL: 7330.143</span></a></code></pre></div>
 <p>Beware that in <code>Bmix</code> the input data is not stored inside the fit, so all the functions that require the data to make computations are required to receive the input data as a parameter. Do not change that data because the package is not doing any check about the input.</p>
 <p>You have getters to access the clusters (as <code>tibble</code>) and the fit parameters.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Augment data with cluster labels and latent variables</span></a>
@@ -153,16 +153,16 @@
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 1,000 x 5</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;    successes trials cluster  `Bin 1` `Bin 2`</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;        &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  1        34    100 Bin 2   2.77e-13   1.000</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  2        32    100 Bin 2   1.91e-14   1.000</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  3        44    100 Bin 2   1.79e- 7   1.000</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  4        43    100 Bin 2   4.70e- 8   1.000</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  5        39    100 Bin 2   2.23e-10   1.000</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  6        33    100 Bin 2   7.28e-14   1.000</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  7        36    100 Bin 2   4.03e-12   1.000</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  8        41    100 Bin 2   3.24e- 9   1.000</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  9        35    100 Bin 2   1.06e-12   1.000</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10        30    100 Bin 2   1.32e-15   1.000</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  1        31    100 Bin 2   1.20e-14   1.000</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  2        34    100 Bin 2   7.37e-13   1.000</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  3        45    100 Bin 2   2.63e- 6   1.000</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  4        33    100 Bin 2   1.87e-13   1.000</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  5        39    100 Bin 2   7.01e-10   1.000</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  6        47    100 Bin 2   4.08e- 5   1.000</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  7        38    100 Bin 2   1.78e-10   1.000</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  8        41    100 Bin 2   1.09e- 8   1.000</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  9        45    100 Bin 2   2.63e- 6   1.000</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10        42    100 Bin 2   4.29e- 8   1.000</span></a>
 <a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # … with 990 more rows</span></a>
 <a class="sourceLine" id="cb5-17" data-line-number="17"></a>
 <a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co"># Obtain for every fit component the mean and its overdispersion.</span></a>
@@ -171,7 +171,7 @@
 <a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; # A tibble: 2 x 3</span></a>
 <a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;   cluster  mean overdispersion</span></a>
 <a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; 1 Bin 1   0.699              0</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; 1 Bin 1   0.700              0</span></a>
 <a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; 2 Bin 2   0.398              0</span></a></code></pre></div>
 <p>You can plot the clustering assignments (<em>hard clustering</em>).</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/plot_clusters.html">plot_clusters</a></span>(x, data)</a></code></pre></div>
@@ -199,12 +199,12 @@
 <a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; Loading required package: VGAM</span></a>
 <a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; Loading required package: stats4</span></a>
 <a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; Loading required package: splines</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;         OK | 8128.27160860698 *</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;        2/4  |       2 |       0 |           1 |         OK | 8120.18587051986 *</span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;        3/4  |       1 |       0 |           2 | MLE error, forcing stop.        OK | 7230.70898477986 *</span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;        4/4  |       2 |       0 |           2 |         OK | 7391.096</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;         OK | 8125.99265478406 *</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;        2/4  |       2 |       0 |           1 | MLE error, forcing stop.        OK | 8148.251</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;        3/4  |       1 |       0 |           2 | MLE error, forcing stop.MLE error, forcing stop.        OK | 7494.40699855657 *</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;        4/4  |       2 |       0 |           2 | MLE error, forcing stop.        OK | 7327.3943651294 *</span></a>
 <a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;  *** Best with ICL:  7230.709  </span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;  *** Best with ICL:  7327.394  </span></a>
 <a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; BMix model with K = 2 components: 0 Binomials and 2 Beta-Binomials.</span></a>
 <a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; </span></a>
@@ -212,11 +212,11 @@
 <a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; NULL</span></a>
 <a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; Beta-Binomials</span></a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt;           BBin 1       BBin 2</span></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; mu  0.6980435108 3.851884e-01</span></a>
-<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; rho 0.0007551365 3.608159e-14</span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt;          BBin 1      BBin 2</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; mu  0.712280151 0.392967247</span></a>
+<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; rho 0.001119366 0.000973475</span></a>
 <a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; ICL: 7230.709</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; ICL: 7327.394</span></a>
 <a class="sourceLine" id="cb10-32" data-line-number="32"></a>
 <a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co"># Show outputs</span></a>
 <a class="sourceLine" id="cb10-34" data-line-number="34"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(x)</a>
@@ -226,11 +226,11 @@
 <a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; NULL</span></a>
 <a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#&gt; Beta-Binomials</span></a>
-<a class="sourceLine" id="cb10-41" data-line-number="41"><span class="co">#&gt;           BBin 1       BBin 2</span></a>
-<a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt; mu  0.6980435108 3.851884e-01</span></a>
-<a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt; rho 0.0007551365 3.608159e-14</span></a>
+<a class="sourceLine" id="cb10-41" data-line-number="41"><span class="co">#&gt;          BBin 1      BBin 2</span></a>
+<a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt; mu  0.712280151 0.392967247</span></a>
+<a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt; rho 0.001119366 0.000973475</span></a>
 <a class="sourceLine" id="cb10-44" data-line-number="44"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb10-45" data-line-number="45"><span class="co">#&gt; ICL: 7230.709</span></a>
+<a class="sourceLine" id="cb10-45" data-line-number="45"><span class="co">#&gt; ICL: 7327.394</span></a>
 <a class="sourceLine" id="cb10-46" data-line-number="46"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(x, data)</a></code></pre></div>
 <p><img src="Bmix_files/figure-html/unnamed-chunk-10-1.png" width="864"></p>
 <p>You can also decide to test models in which both type of components are present.</p>
@@ -243,49 +243,51 @@
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt;      Run #  | Samp. # |  Binom. | Beta-Binom. |      Conv. |        ICL</span></a>
 <a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; ------------------------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;       1/16  |       1 |       1 |           0 |         OK | 14049.7138317433 *</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt;       2/16  |       2 |       1 |           0 |         OK | 14036.2957884376 *</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt;       3/16  |       1 |       2 |           0 |         OK | 7366.14784604781 *</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt;       4/16  |       2 |       2 |           0 |         OK | 7259.36459680733 *</span></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt;       5/16  |       1 |       0 |           1 |         OK | 8123.783</span></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt;       6/16  |       2 |       0 |           1 |         OK | 8119.866</span></a>
-<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt;       7/16  |       1 |       1 |           1 |         OK | 7390.352</span></a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt;       8/16  |       2 |       1 |           1 |         OK | 7273.787</span></a>
-<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt;       9/16  |       1 |       2 |           1 |         OK | 7658.463</span></a>
-<a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt;      10/16  |       2 |       2 |           1 |         OK | 7701.131</span></a>
-<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt;      11/16  |       1 |       0 |           2 | MLE error, forcing stop.        OK | 7283.862</span></a>
-<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt;      12/16  |       2 |       0 |           2 |         OK | 7381.503</span></a>
-<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt;      13/16  |       1 |       1 |           2 |         OK | 7671.683</span></a>
-<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt;      14/16  |       2 |       1 |           2 |         OK | 7742.416</span></a>
-<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt;      15/16  |       1 |       2 |           2 |         OK | 8051.664</span></a>
-<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt;      16/16  |       2 |       2 |           2 |         OK | 7901.373</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;       1/16  |       1 |       1 |           0 |         OK | 13957.5480040978 *</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt;       2/16  |       2 |       1 |           0 |         OK | 14016.31</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt;       3/16  |       1 |       2 |           0 |         OK | 7430.21253797988 *</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt;       4/16  |       2 |       2 |           0 |         OK | 7317.72317470312 *</span></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt;       5/16  |       1 |       0 |           1 |         OK | 8121.875</span></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt;       6/16  |       2 |       0 |           1 |         OK | 8124.081</span></a>
+<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt;       7/16  |       1 |       1 |           1 | MLE error, forcing stop.        OK | 7334.571</span></a>
+<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt;       8/16  |       2 |       1 |           1 |         OK | 7309.94132448772 *</span></a>
+<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt;       9/16  |       1 |       2 |           1 | MLE error, forcing stop.        OK | 7746.928</span></a>
+<a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt;      10/16  |       2 |       2 |           1 |         OK | 7733.158</span></a>
+<a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt;      11/16  |       1 |       0 |           2 |         OK | 7328.945</span></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt;      12/16  |       2 |       0 |           2 | MLE error, forcing stop.MLE error, forcing stop.        OK | 7294.20293731128 *</span></a>
+<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt;      13/16  |       1 |       1 |           2 |         OK | 7756.265</span></a>
+<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt;      14/16  |       2 |       1 |           2 |         OK | 7739.593</span></a>
+<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt;      15/16  |       1 |       2 |           2 |         OK | 7932.021</span></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt;      16/16  |       2 |       2 |           2 |         OK | 7936.063</span></a>
 <a class="sourceLine" id="cb11-26" data-line-number="26"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-27" data-line-number="27"><span class="co">#&gt;  *** Best with ICL:  7259.365  </span></a>
+<a class="sourceLine" id="cb11-27" data-line-number="27"><span class="co">#&gt;  *** Best with ICL:  7294.203  </span></a>
 <a class="sourceLine" id="cb11-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-29" data-line-number="29"><span class="co">#&gt; BMix model with K = 2 components: 2 Binomials and 0 Beta-Binomials.</span></a>
+<a class="sourceLine" id="cb11-29" data-line-number="29"><span class="co">#&gt; BMix model with K = 2 components: 0 Binomials and 2 Beta-Binomials.</span></a>
 <a class="sourceLine" id="cb11-30" data-line-number="30"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb11-31" data-line-number="31"><span class="co">#&gt; Binomials</span></a>
-<a class="sourceLine" id="cb11-32" data-line-number="32"><span class="co">#&gt;     Bin 1     Bin 2 </span></a>
-<a class="sourceLine" id="cb11-33" data-line-number="33"><span class="co">#&gt; 0.6986543 0.3961874 </span></a>
-<a class="sourceLine" id="cb11-34" data-line-number="34"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-35" data-line-number="35"><span class="co">#&gt; Beta-Binomials</span></a>
-<a class="sourceLine" id="cb11-36" data-line-number="36"><span class="co">#&gt; NULL</span></a>
-<a class="sourceLine" id="cb11-37" data-line-number="37"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-38" data-line-number="38"><span class="co">#&gt; ICL: 7259.365</span></a>
-<a class="sourceLine" id="cb11-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb11-40" data-line-number="40"><span class="co"># Show outputs</span></a>
-<a class="sourceLine" id="cb11-41" data-line-number="41"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(x)</a>
-<a class="sourceLine" id="cb11-42" data-line-number="42"><span class="co">#&gt; BMix model with K = 2 components: 2 Binomials and 0 Beta-Binomials.</span></a>
-<a class="sourceLine" id="cb11-43" data-line-number="43"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-44" data-line-number="44"><span class="co">#&gt; Binomials</span></a>
-<a class="sourceLine" id="cb11-45" data-line-number="45"><span class="co">#&gt;     Bin 1     Bin 2 </span></a>
-<a class="sourceLine" id="cb11-46" data-line-number="46"><span class="co">#&gt; 0.6986543 0.3961874 </span></a>
+<a class="sourceLine" id="cb11-32" data-line-number="32"><span class="co">#&gt; NULL</span></a>
+<a class="sourceLine" id="cb11-33" data-line-number="33"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb11-34" data-line-number="34"><span class="co">#&gt; Beta-Binomials</span></a>
+<a class="sourceLine" id="cb11-35" data-line-number="35"><span class="co">#&gt;          BBin 1       BBin 2</span></a>
+<a class="sourceLine" id="cb11-36" data-line-number="36"><span class="co">#&gt; mu  0.706456580 0.4041768919</span></a>
+<a class="sourceLine" id="cb11-37" data-line-number="37"><span class="co">#&gt; rho 0.001119366 0.0006389123</span></a>
+<a class="sourceLine" id="cb11-38" data-line-number="38"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb11-39" data-line-number="39"><span class="co">#&gt; ICL: 7294.203</span></a>
+<a class="sourceLine" id="cb11-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb11-41" data-line-number="41"><span class="co"># Show outputs</span></a>
+<a class="sourceLine" id="cb11-42" data-line-number="42"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(x)</a>
+<a class="sourceLine" id="cb11-43" data-line-number="43"><span class="co">#&gt; BMix model with K = 2 components: 0 Binomials and 2 Beta-Binomials.</span></a>
+<a class="sourceLine" id="cb11-44" data-line-number="44"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb11-45" data-line-number="45"><span class="co">#&gt; Binomials</span></a>
+<a class="sourceLine" id="cb11-46" data-line-number="46"><span class="co">#&gt; NULL</span></a>
 <a class="sourceLine" id="cb11-47" data-line-number="47"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb11-48" data-line-number="48"><span class="co">#&gt; Beta-Binomials</span></a>
-<a class="sourceLine" id="cb11-49" data-line-number="49"><span class="co">#&gt; NULL</span></a>
-<a class="sourceLine" id="cb11-50" data-line-number="50"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb11-51" data-line-number="51"><span class="co">#&gt; ICL: 7259.365</span></a>
-<a class="sourceLine" id="cb11-52" data-line-number="52"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(x, data)</a></code></pre></div>
+<a class="sourceLine" id="cb11-49" data-line-number="49"><span class="co">#&gt;          BBin 1       BBin 2</span></a>
+<a class="sourceLine" id="cb11-50" data-line-number="50"><span class="co">#&gt; mu  0.706456580 0.4041768919</span></a>
+<a class="sourceLine" id="cb11-51" data-line-number="51"><span class="co">#&gt; rho 0.001119366 0.0006389123</span></a>
+<a class="sourceLine" id="cb11-52" data-line-number="52"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb11-53" data-line-number="53"><span class="co">#&gt; ICL: 7294.203</span></a>
+<a class="sourceLine" id="cb11-54" data-line-number="54"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(x, data)</a></code></pre></div>
 <p><img src="Bmix_files/figure-html/unnamed-chunk-11-1.png" width="864"></p>
   </div>
 

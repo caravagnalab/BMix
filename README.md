@@ -7,6 +7,8 @@
 status](https://travis-ci.org/caravagn/BMix.svg?branch=master)](https://travis-ci.org/caravagn/BMix)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![](https://img.shields.io/badge/Part%20of-evoverse-blue.svg)](https://caravagn.github.io/evoverse)
+
 <!-- badges: end -->
 
 `BMix` provides univariate Binomial and Beta-Binomial mixture models, as
@@ -22,12 +24,12 @@ accounts for the entropy of the latent variables.
 
 `BMix` is part of the `evoverse` set of [R
 packages](https://caravagn.github.io/evoverse) to implement Cancer
-Evolution analyses.
+Evolution
+analyses.
 
 #### Help and support
 
-`BMix` has its own webpage at [GitHub
-pages](https://caravagn.github.io/BMix/).
+[![](https://img.shields.io/badge/GitHub%20Pages-https://caravagn.github.io/BMix/-yellow.svg)](https://caravagn.github.io/BMix)
 
 -----
 
@@ -45,33 +47,17 @@ devtools::install_github("caravagn/BMix")
 
 #### Copyright and contacts
 
-Giulio Caravagna, PhD. *Institute of Cancer Research, London, UK*.
+Giulio Caravagna, PhD. *Institute of Cancer Research, London,
+UK*.
 
-  - Personal webpage:
-    [https://bit.ly/2kc9E6Y](https://sites.google.com/site/giuliocaravagna/),
-  - Email address: <giulio.caravagna@icr.ac.uk> and
-    <gcaravagn@gmail.com>
-  - Twitter feed: [@gcaravagna](https://twitter.com/gcaravagna)
-  - GitHub space: [caravagn](https://github.com/caravagn)
+<!-- Place this tag in your head or just before your close body tag. -->
 
------
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<div id="bg">
+<!-- Place this tag where you want the button to render. -->
 
-<a href="https://caravagn.github.io/evoverse">
-<img src="https://caravagn.github.io/evoverse/reference/figures/logo.png" width="8%">
-</a> <a href="https://caravagn.github.io/CNAqc">
-<img src="https://caravagn.github.io/CNAqc/reference/figures/logo.png" width="8%">
-</a> <a href="https://caravagn.github.io/BMix">
-<img src="https://caravagn.github.io/BMix/reference/figures/logo.png" width="8%">
-</a> </a> <a href="https://caravagn.github.io/VIBER">
-<img src="https://caravagn.github.io/VIBER/reference/figures/logo.png" width="8%">
-</a> <a href="https://caravagn.github.io/ctree">
-<img src="https://caravagn.github.io/ctree/reference/figures/logo.png" width="8%">
-</a> <a href="https://caravagn.github.io/mtree">
-<img src="https://caravagn.github.io/mtree/reference/figures/logo.png" width="8%">
-</a> </a> <a href="https://caravagn.github.io/revolver">
-<img src="https://caravagn.github.io/revolver/reference/figures/logo.png" width="8%">
-</a>
-
-</div>
+<a class="github-button" href="https://github.com/caravagn" aria-label="Follow @caravagn on GitHub">Follow
+@caravagn</a>
+[![](https://img.shields.io/badge/Email-gcaravagn@gmail.com-seagreen.svg)](mailto:gcaravagn@gmail.com)
+[![](https://img.shields.io/badge/Twitter-@gcaravagna-steelblue.svg)](https://twitter.com/gcaravagna)
+[![](https://img.shields.io/badge/Personal%20webpage-https://bit.ly/2kc9E6Y-red.svg)](https://sites.google.com/site/giuliocaravagna/)
