@@ -20,17 +20,25 @@
 
   if(BMix_welcome_message)
   {
-    pio::pioHdr('BMix - Binomial and Beta-Binomial mixture models')
-    pio::pioStr("Author : ", "Giulio Caravagna <gcaravagn@gmail.com>", suffix = '\n')
-    pio::pioStr("GitHub : ", "caravagn/BMix", suffix = '\n')
-    pio::pioStr("   WWW : ", "https://caravagn.github.io/BMix/", suffix = '\n')
+    # pio::pioHdr('BMix - Binomial and Beta-Binomial mixture models')
+    # pio::pioStr("Author : ", "Giulio Caravagna <gcaravagn@gmail.com>", suffix = '\n')
+    # pio::pioStr("GitHub : ", "caravagn/BMix", suffix = '\n')
+    # pio::pioStr("   WWW : ", "https://caravagn.github.io/BMix/", suffix = '\n')
+    #
+    #
+    # cat(
+    #   "\n > BMix is part of the", crayon::green("\"evoverse\""),
+    #   crayon::blue("[https://bit.ly/2orn94e]"),
+    #   "- a collection of packages to implement Cancer Evolution analyses from cancer sequencing data.\n"
+    # )
 
+    pk = 'BMix'
+    pk_l = 'Binomial and Beta-Binomial univariate mixtures'
+    www = "https://caravagn.github.io/BMix/"
+    em = "gcaravagn@gmail.com"
 
-    cat(
-      "\n > BMix is part of the", crayon::green("\"evoverse\""),
-      crayon::blue("[https://bit.ly/2orn94e]"),
-      "- a collection of packages to implement Cancer Evolution analyses from cancer sequencing data.\n"
-    )
+    cli::cli_alert_success(
+      'Loading {.field {pk}}, {.emph \'{pk_l}\'}. Support : {.url { www}}' )
 
 
     options(BMix_welcome_message = FALSE)

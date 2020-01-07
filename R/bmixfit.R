@@ -30,6 +30,7 @@
 #' @param entropy If `FALSE`, then the entropy term from the Integrated Classification
 #' Likelihood is not included, and the model is then scored by the Bayesian Information
 #' Criterion.
+#' @param silent If `FALSE`, does not print outputs.
 #'
 #' @return An object of class \code{bmix} that represents a fit mixture of this package.
 #'
@@ -50,7 +51,8 @@ bmixfit = function(
   K.BetaBinomials = 0,
   epsilon = 1e-8,
   samples = 2,
-  entropy = TRUE
+  entropy = TRUE,
+  silent = FALSE
 )
 {
   grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
@@ -59,13 +61,15 @@ bmixfit = function(
 
   best.score = .Machine$integer.max
 
-  pio::pioHdr('BMix ~ Fitting data')
 
-  pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
+  if(!silent)
+  {
+    pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
 
-  cat(sprintf("%10s  | %7s |  %6s | %11s | %10s | %10s\n",
-              "Run #", "Samp. #", "Binom.", "Beta-Binom.", "Conv.", "ICL" ))
-  cat("------------------------------------------------------------------------------")
+    cat(sprintf("%10s  | %7s |  %6s | %11s | %10s | %10s\n",
+                "Run #", "Samp. #", "Binom.", "Beta-Binom.", "Conv.", "ICL" ))
+    cat("------------------------------------------------------------------------------")
+  }
 
   fits = NULL
   for(i in 1:nrow(grid))
@@ -74,11 +78,9 @@ bmixfit = function(
     success = FALSE
     repeat {
       tryCatch({
-        cat(sprintf("\n%10s  | %7s |  %6s | %11s | ", paste0(i, '/', nrow(grid)), grid$Sample[i], grid$B[i], grid$BB[i]))
 
-        # cat('\n',
-        #     paste0('#',i,'.'),
-        #     "K =", grid$B[i], "Binomials + K =", grid$BB[i], "Beta-Binomials: ")
+        if(!silent)
+          cat(sprintf("\n%10s  | %7s |  %6s | %11s | ", paste0(i, '/', nrow(grid)), grid$Sample[i], grid$B[i], grid$BB[i]))
 
         # try the EM
         fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, use_entropy = entropy)
@@ -92,21 +94,25 @@ bmixfit = function(
       {
         # cat("\n\tIntercepted error (retrying)\n")
         # print(e)
-        cat(crayon::red("error (forcing restart of this computation)"))
+        if(!silent) cat(crayon::red("error (forcing restart of this computation)"))
       }
       )
     }
 
-    if(fit$status.MLE.error){
-      cat(crayon::red(sprintf("%10s", "MLE error")), '| ')
+    if(!silent)
+    {
+      if(fit$status.MLE.error){
+        cat(crayon::red(sprintf("%10s", "MLE error")), '| ')
+      }
+      else cat(crayon::green(sprintf("%10s", "OK")), '| ')
     }
-    else cat(crayon::green(sprintf("%10s", "OK")), '| ')
 
     grid$ICL[i] = fit$ICL
 
     if(fit$ICL < best.score)
     {
-      cat(crayon::green(fit$ICL), '*')
+      if(!silent)
+        cat(crayon::green(fit$ICL), '*')
       best.score = fit$ICL
     }
     else cat(fit$ICL)
@@ -118,7 +124,11 @@ bmixfit = function(
   best = fits[[best]]
   best$grid.model.selection = grid
 
-  cat("\n\n *** Best with ICL: ", min(grid$ICL), " \n\n")
-  print(best)
-  best
+  if(!silent)
+  {
+    cat("\n\n *** Best model: ", min(grid$ICL), " \n\n")
+    print(best)
+  }
+
+  return(best)
 }
