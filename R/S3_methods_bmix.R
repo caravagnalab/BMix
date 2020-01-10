@@ -18,15 +18,56 @@
 #' print(x)
 print.bmix = function(x, ...)
 {
-  cat("BMix model with K =", sum(x$K), "components:", x$K[1], "Binomials and", x$K[2], "Beta-Binomials.\n")
+  # cat("BMix model with K =", sum(x$K), "components:", x$K[1], "Binomials and", x$K[2], "Beta-Binomials.\n")
+  #
+  # cat("\nBinomials\n")
+  # print(x$B.params)
+  #
+  # cat("\nBeta-Binomials\n")
+  # print(x$BB.params)
+  #
+  # cat("\nICL:", x$ICL, '\n')
 
-  cat("\nBinomials\n")
-  print(x$B.params)
+  cli::cli_rule(
+    paste(
+      crayon::bgYellow(crayon::black("[ BMix ] {.value {x$description}}")),
+      'n = {.value {dim(x$z_nk)[1]}} with {.field k = {dim(x$z_nk)[2]}} component(s) ({.field {x$K[1]}} + {.field {x$K[2]}})'
+    )
+  )
 
-  cat("\nBeta-Binomials\n")
-  print(x$BB.params)
+  # Pi proportions
+  sor_p = sort(x$pi, decreasing = TRUE)
+  sor_p = names(sor_p)
 
-  cat("\nICL:", x$ICL, '\n')
+  pi = round(x$pi[sor_p], digits = 2) * 100
+  pi = pi[pi > 0]
+  pi_label = paste0(pi, '% [', crayon::yellow(names(pi)), ']')
+  cli::cli_li(
+    ' Clusters: \u03C0 = {.value {pi_label}}, with \u03C0 > 0.'
+  )
+
+  for (i in names(x$B.params))
+    cli::cli_li(
+      paste0(
+        "Binomial {.field {i}} with mean = {.value {x$B.params[i]}}."
+      )
+    )
+
+  for (i in names(x$BB.params))
+    cli::cli_li(
+      paste0(
+        "Beta-Binomial {.field {i}} with mean = {.value {x$BB.params[i]}}."
+      )
+    )
+  cli::cli_end()
+
+  # cat('\n')
+  xs = round(x$ICL, 2)
+
+  if(x$use_entropy)
+    cli::cli_alert_info('Score(s): ICL = {.value {xs}}.')
+  else
+    cli::cli_alert_info('Score(s): BIC = {.value {xs}}.')
 }
 
 

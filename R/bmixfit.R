@@ -52,83 +52,143 @@ bmixfit = function(
   epsilon = 1e-8,
   samples = 2,
   entropy = TRUE,
-  silent = FALSE
+  silent = FALSE,
+  description = "My BMix model"
 )
 {
+  pio::pioHdr(paste0("BMix fit"))
+  cat('\n')
+
   grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
   grid = grid[ grid$B + grid$BB > 0, , drop = FALSE]
-  grid$ICL = NA
 
-  best.score = .Machine$integer.max
-
+  # best.score = .Machine$integer.max
 
   if(!silent)
   {
-    pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
+    cli::cli_alert_info("Binomials k_B = {.value {K.Binomials}}, Beta-Binomials k_BB = {.value {K.BetaBinomials}}.")
+    cli::cli_alert_success("Fits to run, n = {.value {nrow(grid)}}.")
 
-    cat(sprintf("%10s  | %7s |  %6s | %11s | %10s | %10s\n",
-                "Run #", "Samp. #", "Binom.", "Beta-Binom.", "Conv.", "ICL" ))
-    cat("------------------------------------------------------------------------------")
+    #
+    # pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
+    #
+    # cat(sprintf("%10s  | %7s |  %6s | %11s | %10s | %10s\n",
+    #             "Run #", "Samp. #", "Binom.", "Beta-Binom.", "Conv.", "ICL" ))
+    # cat("------------------------------------------------------------------------------")
   }
 
-  fits = NULL
-  for(i in 1:nrow(grid))
-  {
-    # Loop untill it computes without errors
-    success = FALSE
-    repeat {
-      tryCatch({
+  # grid$epsilon = epsilon
+  # grid$entropy = entropy
 
-        if(!silent)
-          cat(sprintf("\n%10s  | %7s |  %6s | %11s | ", paste0(i, '/', nrow(grid)), grid$Sample[i], grid$B[i], grid$BB[i]))
+  inputs = grid[, 2:ncol(grid)]
+  inputs = apply(inputs, 1, function(x) list(data = data, B = x['B'], BB = x['BB'], entropy = entropy, epsilon = epsilon))
 
-        # try the EM
-        fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, use_entropy = entropy)
+  TIME = as.POSIXct(Sys.time(), format = "%H:%M:%S")
 
-        # if you get here, it will exit
-        success = TRUE
-        if(success) break;
+  results = easypar::run(
+    FUN = runner,
+    PARAMS = inputs,
+    parallel = FALSE
+  )
 
-      },
-      error = function(e)
-      {
-        # cat("\n\tIntercepted error (retrying)\n")
-        # print(e)
-        if(!silent) cat(crayon::red("error (forcing restart of this computation)"))
-      }
-      )
-    }
+  # Report timing to screen
+  TIME = difftime(as.POSIXct(Sys.time(), format = "%H:%M:%S"), TIME, units = "mins")
 
-    if(!silent)
-    {
-      if(fit$status.MLE.error){
-        cat(crayon::red(sprintf("%10s", "MLE error")), '| ')
-      }
-      else cat(crayon::green(sprintf("%10s", "OK")), '| ')
-    }
+  cat('\n')
+  cli::cli_alert_info(
+    paste(crayon::bold("Bmix best fit"), 'completed in',
+          round(TIME, 2),
+          'mins'))
+  cat('\n')
 
-    grid$ICL[i] = fit$ICL
+  best = results[[which.min(sapply(results, function(x) x$ICL))]]
+  best$description = description
 
-    if(fit$ICL < best.score)
-    {
-      if(!silent)
-        cat(crayon::green(fit$ICL), '*')
-      best.score = fit$ICL
-    }
-    else cat(fit$ICL)
+  print(best)
 
-    fits = append(fits, list(fit))
-  }
+  # for(i in 1:nrow(grid))
+  # {
+  #   # # Loop untill it computes without errors
+  #   # success = FALSE
+  #   # repeat {
+  #   #   tryCatch({
+  #   #
+  #   #     if(!silent)
+  #   #       cat(sprintf("\n%10s  | %7s |  %6s | %11s | ", paste0(i, '/', nrow(grid)), grid$Sample[i], grid$B[i], grid$BB[i]))
+  #   #
+  #   #     # try the EM
+  #   #     fit = bmixfit_EM(data, K = c(grid$B[i], grid$BB[i]), epsilon = epsilon, use_entropy = entropy)
+  #   #
+  #   #     # if you get here, it will exit
+  #   #     success = TRUE
+  #   #     if(success) break;
+  #   #
+  #   #   },
+  #   #   error = function(e)
+  #   #   {
+  #   #     # cat("\n\tIntercepted error (retrying)\n")
+  #   #     # print(e)
+  #   #     if(!silent) cat(crayon::red("error (forcing restart of this computation)"))
+  #   #   }
+  #   #   )
+  #   # }
+  #   #
+  #   # if(!silent)
+  #   # {
+  #   #   if(fit$status.MLE.error){
+  #   #     cat(crayon::red(sprintf("%10s", "MLE error")), '| ')
+  #   #   }
+  #   #   else cat(crayon::green(sprintf("%10s", "OK")), '| ')
+  #   # }
+  #
+  #   grid$ICL[i] = fit$ICL
+  #
+  #   if(fit$ICL < best.score)
+  #   {
+  #     if(!silent)
+  #       cat(crayon::green(fit$ICL), '*')
+  #     best.score = fit$ICL
+  #   }
+  #   else cat(fit$ICL)
+  #
+  #   fits = append(fits, list(fit))
+  # }
+  #
+  # best = which.min(grid$ICL)
+  # best = fits[[best]]
+  # best$grid.model.selection = grid
+  #
+  # if(!silent)
+  # {
+  #   cat("\n\n *** Best model: ", min(grid$ICL), " \n\n")
+  #   print(best)
+  # }
 
-  best = which.min(grid$ICL)
-  best = fits[[best]]
-  best$grid.model.selection = grid
-
-  if(!silent)
-  {
-    cat("\n\n *** Best model: ", min(grid$ICL), " \n\n")
-    print(best)
-  }
 
   return(best)
+}
+
+runner =  function(data, B, BB, epsilon, entropy){
+
+  # Loop untill it computes without errors
+  success = FALSE
+  fit = NULL
+  repeat {
+    tryCatch({
+      # try the EM
+      fit = BMix:::bmixfit_EM(data, K = c(B, BB), epsilon = epsilon, use_entropy = entropy)
+
+      # if you get here, it will exit
+      break;
+
+    },
+    error = function(e)
+    {
+      cli::cli_alert_danger("Error, forcing restart of this computation.")
+      print(e)
+    }
+    )
+  }
+
+  return(fit)
 }
