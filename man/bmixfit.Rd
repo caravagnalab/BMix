@@ -5,7 +5,8 @@
 \title{Fit a \code{Bmix} mixture}
 \usage{
 bmixfit(data, K.Binomials = 1:2, K.BetaBinomials = 0,
-  epsilon = 1e-08, samples = 2, entropy = TRUE)
+  epsilon = 1e-08, samples = 2, entropy = TRUE, silent = FALSE,
+  description = "My BMix model")
 }
 \arguments{
 \item{data}{A matrix or dataframe with two columns, the first one must represent
@@ -28,6 +29,8 @@ configuration of mixture.}
 \item{entropy}{If `FALSE`, then the entropy term from the Integrated Classification
 Likelihood is not included, and the model is then scored by the Bayesian Information
 Criterion.}
+
+\item{silent}{If `FALSE`, does not print outputs.}
 }
 \value{
 An object of class \code{bmix} that represents a fit mixture of this package.
