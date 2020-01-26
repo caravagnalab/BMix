@@ -103,6 +103,7 @@ bmixfit = function(
 
   best = results[[which.min(sapply(results, function(x) x$ICL))]]
   best$description = description
+  best$grid.model.selection = cbind(grid, `ICL` = sapply(results, function(x) x$ICL))
 
   print(best)
 

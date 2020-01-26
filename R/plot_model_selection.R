@@ -47,6 +47,6 @@ plot_model_selection = function(x)
                                "BIC")
         )
     ) +
-    my_ggplot_theme() +
+    BMix:::my_ggplot_theme() +
     guides(fill = guide_colorbar("Score", barwidth = 6))
 }
