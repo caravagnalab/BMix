@@ -31,9 +31,17 @@ to_string = function(x)
     d
   }
 
+  # Number of points per cluster
   n_cl = data.frame(as.vector(table(x$labels)), stringsAsFactors = FALSE) %>% t
   colnames(n_cl) = names(table(x$labels))
 
+  # Clusters means and overdispersion
+  Bm = BBm = BBo = data.frame()
+  if(x$K[1] > 0) Bm = as.data.frame(x$B.params) %>% t %>% rn(n = "Mean")
+  if(x$K[2] > 0) BBm = as.data.frame(x$BB.params[1, , drop = F]) %>% rn(n = "Mean")
+  if(x$K[2] > 0) BBo = as.data.frame(x$BB.params[2, , drop = F]) %>% rn(n = "Dispersion")
+
+  # Assembly
   df = cbind(
     data.frame(
       N = length(x$labels),
@@ -44,14 +52,14 @@ to_string = function(x)
       K_BB = x$K[2],
       K = sum(x$K),
       x$pi %>% as.data.frame %>% t %>% rn(n = "Pi"),
-      as.data.frame(x$B.params) %>% t %>% rn(n = "Mean"),
-      as.data.frame(x$BB.params[1, , drop = F]) %>% rn(n = "Mean"),
-      as.data.frame(x$BB.params[2, , drop = F]) %>% rn(n = "Dispersion"),
       ICL = x$ICL,
       BIC = x$BIC,
       entropy = x$entropy,
       use_entropy = x$use_entropy
     )
+
+  if(x$K[1] > 0) df = cbind(df, Bm)
+  if(x$K[2] > 0) df = cbind(df, BBm, BBo)
 
   rownames(df) = NULL
   df %>% as_tibble()
