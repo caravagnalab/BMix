@@ -4,9 +4,16 @@
 \alias{bmixfit}
 \title{Fit a \code{Bmix} mixture}
 \usage{
-bmixfit(data, K.Binomials = 1:2, K.BetaBinomials = 0,
-  epsilon = 1e-08, samples = 2, entropy = TRUE, silent = FALSE,
-  description = "My BMix model")
+bmixfit(
+  data,
+  K.Binomials = 1:2,
+  K.BetaBinomials = 0,
+  epsilon = 1e-08,
+  samples = 2,
+  entropy = TRUE,
+  silent = FALSE,
+  description = "My BMix model"
+)
 }
 \arguments{
 \item{data}{A matrix or dataframe with two columns, the first one must represent

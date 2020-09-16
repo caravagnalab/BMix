@@ -59,8 +59,15 @@ bmixfit = function(
   pio::pioHdr(paste0("BMix fit"))
   cat('\n')
 
-  grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
-  grid = grid[ grid$B + grid$BB > 0, , drop = FALSE]
+  B_grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = 0,  stringsAsFactors = FALSE)
+  BB_grid = expand.grid(Sample = 1:samples, B = 0,  BB = K.BetaBinomials,  stringsAsFactors = FALSE)
+
+  grid = dplyr::bind_rows(B_grid, BB_grid)
+  grid = grid[grid$B > 0 | grid$BB >0, , drop = FALSE]
+
+  # grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
+  # grid = grid[ grid$B + grid$BB > 0, , drop = FALSE]
+  # grid = grid[ !(grid$B > 0 & grid$BB > 0), , drop = FALSE]
 
   # best.score = .Machine$integer.max
 
