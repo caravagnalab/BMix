@@ -1,4 +1,3 @@
-
 #' Fit a \code{Bmix} mixture
 #'
 #' @description
@@ -45,25 +44,33 @@
 #' x = bmixfit(data)
 #'
 #' print(x)
-bmixfit = function(
-  data,
-  K.Binomials = 1:2,
-  K.BetaBinomials = 0,
-  epsilon = 1e-8,
-  samples = 2,
-  entropy = TRUE,
-  silent = FALSE,
-  description = "My BMix model"
-)
+bmixfit = function(data,
+                   K.Binomials = 1:2,
+                   K.BetaBinomials = 1:2,
+                   epsilon = 1e-8,
+                   samples = 2,
+                   entropy = TRUE,
+                   silent = FALSE,
+                   description = "My BMix model")
 {
   pio::pioHdr(paste0("BMix fit"))
   cat('\n')
 
-  B_grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = 0,  stringsAsFactors = FALSE)
-  BB_grid = expand.grid(Sample = 1:samples, B = 0,  BB = K.BetaBinomials,  stringsAsFactors = FALSE)
+  B_grid = expand.grid(
+    Sample = 1:samples,
+    B = K.Binomials,
+    BB = 0,
+    stringsAsFactors = FALSE
+  )
+  BB_grid = expand.grid(
+    Sample = 1:samples,
+    B = 0,
+    BB = K.BetaBinomials,
+    stringsAsFactors = FALSE
+  )
 
   grid = dplyr::bind_rows(B_grid, BB_grid)
-  grid = grid[grid$B > 0 | grid$BB >0, , drop = FALSE]
+  grid = grid[grid$B > 0 | grid$BB > 0, , drop = FALSE]
 
   # grid = expand.grid(Sample = 1:samples, B = K.Binomials, BB = K.BetaBinomials,  stringsAsFactors = FALSE)
   # grid = grid[ grid$B + grid$BB > 0, , drop = FALSE]
@@ -71,9 +78,11 @@ bmixfit = function(
 
   # best.score = .Machine$integer.max
 
-  if(!silent)
+  if (!silent)
   {
-    cli::cli_alert_info("Binomials k_B = {.value {K.Binomials}}, Beta-Binomials k_BB = {.value {K.BetaBinomials}}.")
+    cli::cli_alert_info(
+      "Binomials k_B = {.value {K.Binomials}}, Beta-Binomials k_BB = {.value {K.BetaBinomials}}."
+    )
     cli::cli_alert_success("Fits to run, n = {.value {nrow(grid)}}.")
 
     #
@@ -88,29 +97,41 @@ bmixfit = function(
   # grid$entropy = entropy
 
   inputs = grid[, 2:ncol(grid)]
-  inputs = apply(inputs, 1, function(x) list(data = data, B = x['B'], BB = x['BB'], entropy = entropy, epsilon = epsilon))
+  inputs = apply(inputs, 1, function(x)
+    list(
+      data = data,
+      B = x['B'],
+      BB = x['BB'],
+      entropy = entropy,
+      epsilon = epsilon
+    ))
 
   TIME = as.POSIXct(Sys.time(), format = "%H:%M:%S")
 
-  results = easypar::run(
-    FUN = runner,
-    PARAMS = inputs,
-    parallel = FALSE
-  )
+  results = easypar::run(FUN = runner,
+                         PARAMS = inputs,
+                         parallel = FALSE)
+
+  if(length(results) == 0)
+    stop("All tasks returned error - cannot analyse this with BMix.")
 
   # Report timing to screen
   TIME = difftime(as.POSIXct(Sys.time(), format = "%H:%M:%S"), TIME, units = "mins")
 
   cat('\n')
-  cli::cli_alert_info(
-    paste(crayon::bold("Bmix best fit"), 'completed in',
-          round(TIME, 2),
-          'mins'))
+  cli::cli_alert_info(paste(
+    crayon::bold("Bmix best fit"),
+    'completed in',
+    round(TIME, 2),
+    'mins'
+  ))
   cat('\n')
 
-  best = results[[which.min(sapply(results, function(x) x$ICL))]]
+  best = results[[which.min(sapply(results, function(x)
+    x$ICL))]]
   best$description = description
-  best$grid.model.selection = cbind(grid, `ICL` = sapply(results, function(x) x$ICL))
+  best$grid.model.selection = cbind(grid, `ICL` = sapply(results, function(x)
+    x$ICL))
 
   print(best)
 
@@ -172,30 +193,49 @@ bmixfit = function(
   #   print(best)
   # }
 
-
   return(best)
 }
 
-runner =  function(data, B, BB, epsilon, entropy){
-
-  # Loop untill it computes without errors
+runner =  function(data, B, BB, epsilon, entropy) {
+  # Loop until it computes without errors
   success = FALSE
   fit = NULL
-  repeat {
+
+  todo_repetitions = 15
+
+  while (!success)
+  {
     tryCatch({
-      # try the EM
-      fit = BMix:::bmixfit_EM(data, K = c(B, BB), epsilon = epsilon, use_entropy = entropy)
+      # Count the attempt
+      todo_repetitions = todo_repetitions - 1
 
-      # if you get here, it will exit
-      break;
+      if (todo_repetitions == 0)
+        success = TRUE
+      else
+      {
+        # try the EM
+        fit = BMix:::bmixfit_EM(
+          data,
+          K = c(B, BB),
+          epsilon = epsilon,
+          use_entropy = entropy
+        )
 
+        # if you get here, it will exit
+        success = TRUE
+      }
     },
     error = function(e)
     {
-      cli::cli_alert_danger("Error, forcing restart of this computation.")
+      cli::cli_alert_danger("Error interpected, forcing restart of this computation.")
       print(e)
-    }
-    )
+    })
+  }
+
+  if (todo_repetitions == 0) {
+    cli::cli_alert_danger("Too many errors for this runner - propagating an error!")
+
+    stop(base::simpleError("Too many errors for this runner - propagating an error!"))
   }
 
   return(fit)

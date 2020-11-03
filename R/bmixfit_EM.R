@@ -136,10 +136,19 @@ bmixfit_EM = function(
     {
       for (k in iB2){
 
+        print(paste0('mixt ', k))
+        print(BB.params)
+
         # Box constraints are computed ensuring that current estimates are in the range
         lmu = min(BB.params['mu', k] - 1e-6, 1e-6)
         umu = min(BB.params['mu', k] - 1e-6, 1-1e-6)
         lrho = min(BB.params['rho', k], 1e-6)
+
+        print(lmu)
+        print(umu)
+        print(lrho)
+
+
 
         # Numerical fit -- it can be instable, we force a stop when we catch an error
         tryCatch({
