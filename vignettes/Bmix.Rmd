@@ -23,8 +23,9 @@ We generate some simple data, obtained from two Binomial mixture components with
 ```{r}
 data = data.frame(
   successes = c(
-    rbinom(300, 100, .4),  # First component - 300 points, peak at 0.4
-    rbinom(700, 100, .7)), # Second component - 700 points, peak at 0.7
+    rbinom(300, 100, .5),  # First component - 300 points, peak at 0.4
+    rbinom(700, 100, .25), # Second component - 700 points, peak at 0.7
+    rbinom(700, 100, .1)), # Second component - 700 points, peak at 0.7
   trials = 100)
 
 print(head(data))
