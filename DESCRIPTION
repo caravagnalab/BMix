@@ -21,7 +21,7 @@ Imports:
     tibble,
     pio
 Remotes: 
-    caravagn/pio
+    caravagn/pio,
     caravagn/easypar
 RoxygenNote: 7.1.1
 Suggests: 
