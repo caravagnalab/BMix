@@ -20,8 +20,8 @@ Imports:
     tibble,
     pio
 Remotes: 
-    caravagn/easypar
-    caravagn/pio,
+    caravagn/easypar,
+    caravagn/pio
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
