@@ -34,6 +34,7 @@
 #' @return An object of class \code{bmix} that represents a fit mixture of this package.
 #'
 #' @import pio
+#' @import cli
 #' @export
 #'
 #' @examples
