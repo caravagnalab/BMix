@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![](https://img.shields.io/badge/Part%20of-evoverse-blue.svg)](https://caravagn.github.io/evoverse)
 
+[![R-CMD-check](https://github.com/caravagn/BMix/workflows/R-CMD-check/badge.svg)](https://github.com/caravagn/BMix/actions)
 <!-- badges: end -->
 
 `BMix` provides univariate Binomial and Beta-Binomial mixture models, as well as mixtures that combine both type of distributions. Count-based mixtures can be used in a variety of settings, for instance to model genome sequencing data of somatic mutations in diseases such as cancer.
