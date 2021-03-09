@@ -7,7 +7,7 @@
 bmixfit(
   data,
   K.Binomials = 1:2,
-  K.BetaBinomials = 1:2,
+  K.BetaBinomials = 0,
   epsilon = 1e-08,
   samples = 2,
   entropy = TRUE,

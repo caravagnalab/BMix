@@ -15,11 +15,11 @@
 #' @export
 #'
 #' @examples
-#' # The same dataset used in the package vignette
+#' # Simple dataset
 #' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
 #'
-#' # BMix fit with default parameters
-#' x = bmixfit(data)
+#' # BMix fit
+#' x = bmixfit(data, K.Binomials = 1:3, K.BetaBinomials = 0:3)
 #'
 #' plot_model_selection(x)
 plot_model_selection = function(x)

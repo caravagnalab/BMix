@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot the density of the mixture. — plot_density • BMix</title>
+<title>Export a tibble with the parameters fits for this model — to_string • BMix</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,10 @@
 
 
 
-<meta property="og:title" content="Plot the density of the mixture. — plot_density" />
-<meta property="og:description" content="This functions plots the density of the fit, coloured
-according to the mixture components. This function
-must receive in input exactly the same data used for the fit." />
+<meta property="og:title" content="Export a tibble with the parameters fits for this model — to_string" />
+<meta property="og:description" content="This functions extracts a tibble reporting the parameters fits for
+the input model (clusters, means of clusters, dispersion, likelihood
+score, cluster sizes etc.)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,18 +121,18 @@ must receive in input exactly the same data used for the fit." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot the density of the mixture.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/caravagn/BMix/blob/master/R/plot_density.R'><code>R/plot_density.R</code></a></small>
-    <div class="hidden name"><code>plot_density.Rd</code></div>
+    <h1>Export a tibble with the parameters fits for this model</h1>
+    <small class="dont-index">Source: <a href='https://github.com/caravagn/BMix/blob/master/R/to_string.R'><code>R/to_string.R</code></a></small>
+    <div class="hidden name"><code>to_string.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This functions plots the density of the fit, coloured
-according to the mixture components. This function
-must receive in input exactly the same data used for the fit.</p>
+    <p>This functions extracts a tibble reporting the parameters fits for
+the input model (clusters, means of clusters, dispersion, likelihood
+score, cluster sizes etc.).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_density</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>data</span>, trials <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>to_string</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,21 +141,11 @@ must receive in input exactly the same data used for the fit.</p>
       <th>x</th>
       <td><p>An object of class <code>bmix</code> that represents a fit.</p></td>
     </tr>
-    <tr>
-      <th>data</th>
-      <td><p>The data used to compute the fit <code>x</code>.</p></td>
-    </tr>
-    <tr>
-      <th>trials</th>
-      <td><p>To compute the density a number of trials must be
-fixed. This parameter represents exactly that. By default the median
-number of trials in the input <code>data</code> are taken.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A ggplot object.</p>
+    <p>A `tibble` for the statistcis.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># The same dataset used in the package vignette</span>
@@ -164,9 +154,14 @@ number of trials in the input <code>data</code> are taken.</p></td>
 <span class='co'># BMix fit with default parameters</span>
 <span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='bmixfit.html'>bmixfit</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #BBBBBB;background-color: #0000BB;'> [ BMix fit ] 
-#&gt; </span><span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Fits to run, n = 4.</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> </span><span style='font-weight: bold;'>Bmix best fit</span><span> completed in 0 mins</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>── </span><span style='color: #000000;background-color: #BBBB00;'>[ BMix ] My BMix model</span><span> n = 100 with </span><span style='color: #00BB00;'>k = 2</span><span> component(s) (</span><span style='color: #00BB00;'>2</span><span> + </span><span style='color: #00BB00;'>0</span><span>) ──────────────</span></div><div class='output co'>#&gt; <span class='message'>● Clusters: π = 70% [</span><span style='color: #BBBB00;'>Bin 1</span><span>] and 30% [</span><span style='color: #BBBB00;'>Bin 2</span><span>], with π &gt; 0.</span></div><div class='output co'>#&gt; <span class='message'>● Binomial </span><span style='color: #00BB00;'>Bin 1</span><span> with mean = 0.712430526840376.</span></div><div class='output co'>#&gt; <span class='message'>● Binomial </span><span style='color: #00BB00;'>Bin 2</span><span> with mean = 0.396695150493778.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Score(s): ICL = 755.87.</span></div><div class='input'>
-<span class='fu'>plot_density</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>data</span><span class='op'>)</span>
-</div><div class='img'><img src='plot_density-1.png' alt='' width='700' height='433' /></div></span></pre>
+#&gt; </span><span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✓</span><span> Fits to run, n = 4.</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> </span><span style='font-weight: bold;'>Bmix best fit</span><span> completed in 0 mins</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>── </span><span style='color: #000000;background-color: #BBBB00;'>[ BMix ] My BMix model</span><span> n = 100 with </span><span style='color: #00BB00;'>k = 2</span><span> component(s) (</span><span style='color: #00BB00;'>2</span><span> + </span><span style='color: #00BB00;'>0</span><span>) ──────────────</span></div><div class='output co'>#&gt; <span class='message'>● Clusters: π = 70% [</span><span style='color: #BBBB00;'>Bin 2</span><span>] and 30% [</span><span style='color: #BBBB00;'>Bin 1</span><span>], with π &gt; 0.</span></div><div class='output co'>#&gt; <span class='message'>● Binomial </span><span style='color: #00BB00;'>Bin 1</span><span> with mean = 0.387322027022512.</span></div><div class='output co'>#&gt; <span class='message'>● Binomial </span><span style='color: #00BB00;'>Bin 2</span><span> with mean = 0.694986599082368.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Score(s): ICL = 732.57.</span></div><div class='input'>
+<span class='fu'>to_string</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 14</span><span>
+#&gt;       N N_Bin_1 N_Bin_2   K_B  K_BB     K Pi_Bin_1 Pi_Bin_2   ICL   BIC entropy
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   100      30      70     2     0     2    0.300    0.700  733.  733.  0.033</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #949494;'># … with 3 more variables: use_entropy &lt;lgl&gt;, Mean_Bin_1 &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   Mean_Bin_2 &lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -28,7 +28,6 @@ bmixfit_EM = function(
 
   cluster.names = c(Bin.names, BBin.names)
 
-
   # Initial conditions by kmeans clustering of "p" for Binomial/ Beta-Binomial
   frequencies = data[, 1]/data[, 2]
   km = kmeans(frequencies, centers = K.total, nstart = 100)
@@ -136,17 +135,17 @@ bmixfit_EM = function(
     {
       for (k in iB2){
 
-        print(paste0('mixt ', k))
-        print(BB.params)
+        # print(paste0('mixt ', k))
+        # print(BB.params)
 
         # Box constraints are computed ensuring that current estimates are in the range
         lmu = min(BB.params['mu', k] - 1e-6, 1e-6)
         umu = min(BB.params['mu', k] - 1e-6, 1-1e-6)
         lrho = min(BB.params['rho', k], 1e-6)
 
-        print(lmu)
-        print(umu)
-        print(lrho)
+        # print(lmu)
+        # print(umu)
+        # print(lrho)
 
 
 
@@ -166,7 +165,7 @@ bmixfit_EM = function(
         },
         error = function(e)
         {
-          cat(crayon::red("MLE error, forcing stop."))
+          warning("MLE error, forcing stop.")
           epsilon = epsilon.conv - 0.01
 
           fit$status.MLE.error = TRUE
