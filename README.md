@@ -3,9 +3,10 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/caravagn/BMix/workflows/R-CMD-check/badge.svg)](https://github.com/caravagn/BMix/actions)
+[![pkgdown](https://github.com/caravagnalab/BMix/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/caravagnalab/BMix/actions/workflows/pkgdown.yaml)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![R-CMD-check](https://github.com/caravagn/BMix/workflows/R-CMD-check/badge.svg)](https://github.com/caravagn/BMix/actions)
 
 <!-- badges: end -->
 
