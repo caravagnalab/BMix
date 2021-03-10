@@ -12,24 +12,14 @@ Description: BMix provides univariate Binomial and Beta-Binomial mixture models.
 License: GPL
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    ggplot2,
-    cli,
-    VGAM,
-    cowplot,
-    dplyr,
-    tibble,
-    crayon,
-    stats4,
-    easypar,
-    pio
-Remotes: 
-    caravagn/easypar,
-    caravagn/pio
+Imports: ggplot2, cli, VGAM, cowplot, dplyr, tibble, crayon, stats4,
+        easypar, pio
+Remotes: caravagn/easypar, caravagn/pio
 RoxygenNote: 7.1.1
-Suggests: 
-    knitr,
-    rmarkdown
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/caravagnalab/BMix
 BugReports: https://github.com/caravagnalab/BMix/issues
+NeedsCompilation: no
+Packaged: 2021-03-10 15:23:59 UTC; gcaravagna
+Built: R 4.0.2; ; 2021-03-10 15:24:01 UTC; unix

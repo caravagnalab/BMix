@@ -1,0 +1,11 @@
+.onLoad	BMix
+BMix	BMix
+bmixfit	bmixfit
+Clusters	Clusters
+Parameters	Parameters
+plot.bmix	plot.bmix
+plot_clusters	plot_clusters
+plot_density	plot_density
+plot_model_selection	plot_model_selection
+print.bmix	print.bmix
+to_string	to_string

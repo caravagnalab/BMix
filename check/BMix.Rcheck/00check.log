@@ -1,0 +1,102 @@
+* using log directory ‘/Users/gcaravagna/Documents/GitHub/BMix/check/BMix.Rcheck’
+* using R version 4.0.2 (2020-06-22)
+* using platform: x86_64-apple-darwin17.0 (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘BMix/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BMix’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘BMix’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import ‘cli::num_ansi_colors’ by ‘crayon::num_ansi_colors’ when loading ‘BMix’
+  Warning: replacing previous import ‘crayon::%+%’ by ‘ggplot2::%+%’ when loading ‘BMix’
+See ‘/Users/gcaravagna/Documents/GitHub/BMix/check/BMix.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... NOTE
+File
+  LICENSE
+is not mentioned in the DESCRIPTION file.
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking dependencies in R code ... NOTE
+There are ::: calls to the package's namespace in its code. A package
+  almost never needs to use ::: for its own objects:
+  ‘bmixfit_EM’ ‘my_ggplot_theme’
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+Parameters: no visible binding for global variable ‘name’
+Parameters: no visible binding for global variable ‘value’
+Parameters: no visible binding for global variable ‘mu’
+Parameters: no visible binding for global variable ‘rho’
+Parameters: no visible binding for global variable ‘cluster’
+Parameters: no visible binding for global variable ‘overdispersion’
+plot_clusters: no visible binding for global variable ‘Frequency’
+plot_clusters: no visible binding for global variable ‘Cluster’
+plot_clusters: no visible binding for global variable ‘..count..’
+plot_density: no visible binding for global variable ‘y’
+plot_density: no visible binding for global variable ‘component’
+plot_model_selection: no visible binding for global variable ‘B’
+plot_model_selection: no visible binding for global variable ‘BB’
+plot_model_selection: no visible binding for global variable ‘ICL’
+plot_model_selection: no visible binding for global variable ‘best’
+Undefined global functions or variables:
+  ..count.. B BB Cluster Frequency ICL best cluster component mu name
+  overdispersion rho value y
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'BMix'
+  ‘libname’ ‘pkgname’
+
+Undocumented arguments in documentation object 'bmixfit'
+  ‘description’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'plot.bmix':
+  ‘plot.bmix’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘BMix.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 WARNINGs, 3 NOTEs

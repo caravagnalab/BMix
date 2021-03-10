@@ -1,0 +1,12 @@
+BMix                    'BMix'
+Clusters                Extract clustering assignments.
+Parameters              Extract the fit parameters of the mixture.
+bmixfit                 Fit a 'Bmix' mixture
+plot.bmix               Plot a 'bmix' object.
+plot_clusters           Plot the clustering of the data.
+plot_density            Plot the density of the mixture.
+plot_model_selection    Plot the grid of model selection for the
+                        mixture.
+print.bmix              Print a 'bmix' object.
+to_string               Export a tibble with the parameters fits for
+                        this model

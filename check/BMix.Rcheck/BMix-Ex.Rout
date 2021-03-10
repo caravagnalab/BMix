@@ -1,0 +1,457 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "BMix"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('BMix')
+Warning: replacing previous import ‘cli::num_ansi_colors’ by ‘crayon::num_ansi_colors’ when loading ‘BMix’
+Warning: replacing previous import ‘crayon::%+%’ by ‘ggplot2::%+%’ when loading ‘BMix’
+✓ Loading BMix, 'Binomial and Beta-Binomial univariate mixtures'. Support : <https://caravagnalab.github.io/BMix/>
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Clusters")
+> ### * Clusters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Clusters
+> ### Title: Extract clustering assignments.
+> ### Aliases: Clusters
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> Clusters(x, data)
+# A tibble: 100 x 5
+   successes trials cluster `Bin 1`       `Bin 2`
+       <int>  <dbl> <chr>     <dbl>         <dbl>
+ 1        42    100 Bin 1     1.00  0.00000129   
+ 2        37    100 Bin 1     1.00  0.00000000508
+ 3        49    100 Bin 1     0.997 0.00302      
+ 4        41    100 Bin 1     1.00  0.000000427  
+ 5        42    100 Bin 1     1.00  0.00000129   
+ 6        41    100 Bin 1     1.00  0.000000427  
+ 7        53    100 Bin 1     0.797 0.203        
+ 8        41    100 Bin 1     1.00  0.000000427  
+ 9        42    100 Bin 1     1.00  0.00000129   
+10        37    100 Bin 1     1.00  0.00000000508
+# … with 90 more rows
+> 
+> 
+> 
+> cleanEx()
+> nameEx("Parameters")
+> ### * Parameters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Parameters
+> ### Title: Extract the fit parameters of the mixture.
+> ### Aliases: Parameters
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> Parameters(x)
+# A tibble: 2 x 3
+  cluster  mean overdispersion
+  <chr>   <dbl>          <dbl>
+1 Bin 1   0.411              0
+2 Bin 2   0.694              0
+> 
+> 
+> 
+> cleanEx()
+> nameEx("bmixfit")
+> ### * bmixfit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: bmixfit
+> ### Title: Fit a 'Bmix' mixture
+> ### Aliases: bmixfit
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> print(x)
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.bmix")
+> ### * plot.bmix
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.bmix
+> ### Title: Plot a 'bmix' object.
+> ### Aliases: plot.bmix
+> 
+> ### ** Examples
+> 
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> # Empty plot
+> plot(x)
+Warning in plot.bmix(x) : No data given in input, returning empty plot.
+> 
+> # Plot with data
+> plot(x, data)
+Warning: Continuous limits supplied to discrete scale.
+Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+Warning: Continuous limits supplied to discrete scale.
+Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+Warning: Removed 4 rows containing missing values (geom_bar).
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_clusters")
+> ### * plot_clusters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_clusters
+> ### Title: Plot the clustering of the data.
+> ### Aliases: plot_clusters
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> plot_clusters(x, data)
+Warning: Removed 4 rows containing missing values (geom_bar).
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_density")
+> ### * plot_density
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_density
+> ### Title: Plot the density of the mixture.
+> ### Aliases: plot_density
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> plot_density(x, data)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_model_selection")
+> ### * plot_model_selection
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_model_selection
+> ### Title: Plot the grid of model selection for the mixture.
+> ### Aliases: plot_model_selection
+> 
+> ### ** Examples
+> 
+> # Simple dataset
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit
+> x = bmixfit(data, K.Binomials = 1:3, K.BetaBinomials = 0:3)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1, 2, and 3, Beta-Binomials k_BB = 0, 1, 2, and 3.
+✓ Fits to run, n = 12.
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in lbeta(shape1[okk], shape2[okk]) : NaNs produced
+Warning in value[[3L]](cond) : MLE error, forcing stop.
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  27 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  70 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  iterations terminated because half-step sizes are very small
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  some quantities such as z, residuals, SEs may be inaccurate due to convergence at a half-step
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  27 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  70 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  iterations terminated because half-step sizes are very small
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  some quantities such as z, residuals, SEs may be inaccurate due to convergence at a half-step
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  2 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  68 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  some quantities such as z, residuals, SEs may be inaccurate due to convergence at a half-step
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in lbeta(shape1[okk], shape2[okk]) : NaNs produced
+Warning in value[[3L]](cond) : MLE error, forcing stop.
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  68 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in vglm.fitter(x = x, y = y, w = w, offset = offset, Xm2 = Xm2,  :
+  some quantities such as z, residuals, SEs may be inaccurate due to convergence at a half-step
+Warning in checkwz(wz, M = M, trace = trace, wzepsilon = control$wzepsilon) :
+  2 diagonal elements of the working weights variable 'wz' have been replaced by 1.819e-12
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+Warning in stats4::mle(minuslogl = .NLLBetaBinMix(k + K[1], data, z_nk,  :
+  start values do not satisfy constraints
+
+ℹ Bmix best fit completed in 0.02 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> plot_model_selection(x)
+Warning: Continuous limits supplied to discrete scale.
+Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+Warning: Continuous limits supplied to discrete scale.
+Did you mean `limits = factor(...)` or `scale_*_continuous()`?
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.bmix")
+> ### * print.bmix
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.bmix
+> ### Title: Print a 'bmix' object.
+> ### Aliases: print.bmix
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> print(x)
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("to_string")
+> ### * to_string
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: to_string
+> ### Title: Export a tibble with the parameters fits for this model
+> ### Aliases: to_string
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> to_string(x)
+# A tibble: 1 x 14
+      N N_Bin_1 N_Bin_2   K_B  K_BB     K Pi_Bin_1 Pi_Bin_2   ICL   BIC entropy
+  <int>   <int>   <int> <dbl> <dbl> <dbl>    <dbl>    <dbl> <dbl> <dbl>   <dbl>
+1   100      30      70     2     0     2    0.298    0.702  732.  731.   0.995
+# … with 3 more variables: use_entropy <lgl>, Mean_Bin_1 <dbl>,
+#   Mean_Bin_2 <dbl>
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  3.608 0.13 3.781 0.002 0.004 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
