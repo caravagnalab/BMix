@@ -1,3 +1,17 @@
+#' @title \code{BMix}
+#'
+#' @description
+#' @docType package
+#' @name BMix
+#'
+#' @return BMix main package documentation.
+#'
+#' @author G.Caravagna \email{gcaravagn@@gmail.com}
+#'
+#' @importFrom graphics hist
+#' @importFrom stats pnorm dbinom dnorm kmeans median pnorm runif shapiro.test
+
+
 .onLoad <- function(libname, pkgname)
 {
   # =-=-=-=-=-=-

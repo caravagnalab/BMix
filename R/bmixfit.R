@@ -35,6 +35,8 @@
 #'
 #' @import pio
 #' @import cli
+#' @importFrom graphics hist
+#'
 #' @export
 #'
 #' @examples
