@@ -57,7 +57,7 @@ plot_model_selection = function(x)
   ms_map = ms_map %>%
     group_by(model, K) %>%
     mutate(
-      fit = ifelse(x$K[1] == B & x$K[2] == BB & score == !!score, "Best", NA)
+      fit = ifelse(x$K[1] == B & x$K[2] == BB & score == !!x$score, "Best", NA)
     )
 
   ggplot(ms_map) +
