@@ -17,9 +17,15 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/caravagnalab/BMix/workflows/R-CMD-check/badge.svg)](https://github.com/caravagnalab/BMix/actions)
 [![pkgdown](https://github.com/caravagnalab/BMix/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/caravagnalab/BMix/actions/workflows/pkgdown.yaml)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
+
+
+
 <!-- badges: end -->
 
-`BMix` provides univariate Binomial and Beta-Binomial mixture models. Count-based mixtures can be used in a variety of settings, for instance to model genome sequencing data of somatic mutations in cancer. `BMix` fits these mixtures by maximum likelihood exploiting the Expectation Maximization algorithm. Model selection for the number of mixture components is by the Integrated Classification Likelihood, an extension of the Bayesian Information Criterion that includes the entropy of the latent variables.
+`BMix` provides univariate Binomial and Beta-Binomial mixture models. Count-based mixtures can be used in a variety of settings, for instance to model genome sequencing data of somatic mutations in cancer.
+
+`BMix` fits these mixtures by maximum likelihood exploiting the Expectation Maximization algorithm. Model selection for the number of mixture components is by the Integrated Classification Likelihood, an extension of the Bayesian Information Criterion that includes the entropy of the latent variables.
 
 
 

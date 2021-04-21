@@ -26,9 +26,7 @@
 #' negative loglikelihood.
 #' @param samples Number of Expectation Maximization fits that should be computed per
 #' configuration of mixture.
-#' @param entropy If `FALSE`, then the entropy term from the Integrated Classification
-#' Likelihood is not included, and the model is then scored by the Bayesian Information
-#' Criterion.
+#' @param score The score for model selection, any of `NLL`, `BIC` or `ICL`.
 #' @param silent If `FALSE`, does not print outputs.
 #'
 #' @return An object of class \code{bmix} that represents a fit mixture of this package.
@@ -56,11 +54,11 @@ bmixfit = function(data,
                    K.BetaBinomials = 0,
                    epsilon = 1e-8,
                    samples = 2,
-                   entropy = TRUE,
+                   score = 'ICL',
                    silent = FALSE,
                    description = "My BMix model")
 {
-  pio::pioHdr(paste0("BMix fit"))
+  cli::cli_h1("BMix fit")
   cat('\n')
 
   B_grid = expand.grid(
@@ -69,6 +67,7 @@ bmixfit = function(data,
     BB = 0,
     stringsAsFactors = FALSE
   )
+
   BB_grid = expand.grid(
     Sample = 1:samples,
     B = 0,
@@ -88,9 +87,8 @@ bmixfit = function(data,
   if (!silent)
   {
     cli::cli_alert_info(
-      "Binomials k_B = {.value {K.Binomials}}, Beta-Binomials k_BB = {.value {K.BetaBinomials}}."
+      "Binomials k_B = {.field {K.Binomials}}, Beta-Binomials k_BB = {.field {K.BetaBinomials}}; {.value {nrow(grid)}} fits to run."
     )
-    cli::cli_alert_success("Fits to run, n = {.value {nrow(grid)}}.")
 
     #
     # pio::pioStr("Total number of runs: ", nrow(grid), suffix = '\n\n')
@@ -109,7 +107,7 @@ bmixfit = function(data,
       data = data,
       B = x['B'],
       BB = x['BB'],
-      entropy = entropy,
+      # entropy = entropy,
       epsilon = epsilon
     ))
 
@@ -134,11 +132,13 @@ bmixfit = function(data,
   ))
   cat('\n')
 
-  best = results[[which.min(sapply(results, function(x)
-    x$ICL))]]
+  best = results[[which.min(sapply(results, function(x) x[[score]]))]]
   best$description = description
-  best$grid.model.selection = cbind(grid, `ICL` = sapply(results, function(x)
-    x$ICL))
+  best$score = score
+  best$grid.model.selection = cbind(grid,
+                                    `NLL` = sapply(results, function(x) x$NLL),
+                                    `BIC` = sapply(results, function(x) x$BIC),
+                                    `ICL` = sapply(results, function(x) x$ICL))
 
   print(best)
 
@@ -203,7 +203,7 @@ bmixfit = function(data,
   return(best)
 }
 
-runner =  function(data, B, BB, epsilon, entropy) {
+runner =  function(data, B, BB, epsilon) {
   # Loop until it computes without errors
   success = FALSE
   fit = NULL
@@ -221,11 +221,10 @@ runner =  function(data, B, BB, epsilon, entropy) {
       else
       {
         # try the EM
-        fit = BMix:::bmixfit_EM(
+        fit = bmixfit_EM(
           data,
           K = c(B, BB),
-          epsilon = epsilon,
-          use_entropy = entropy
+          epsilon = epsilon
         )
 
         # if you get here, it will exit

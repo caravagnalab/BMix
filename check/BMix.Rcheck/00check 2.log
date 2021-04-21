@@ -1,0 +1,143 @@
+* using log directory ‘/Users/gcaravagna/Documents/GitHub/BMix/check/BMix.Rcheck’
+* using R version 4.0.2 (2020-06-22)
+* using platform: x86_64-apple-darwin17.0 (64-bit)
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘BMix/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘BMix’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘BMix’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import ‘cli::num_ansi_colors’ by ‘crayon::num_ansi_colors’ when loading ‘BMix’
+  Warning: replacing previous import ‘crayon::%+%’ by ‘ggplot2::%+%’ when loading ‘BMix’
+See ‘/Users/gcaravagna/Documents/GitHub/BMix/check/BMix.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... NOTE
+File
+  LICENSE
+is not mentioned in the DESCRIPTION file.
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking dependencies in R code ... NOTE
+There are ::: calls to the package's namespace in its code. A package
+  almost never needs to use ::: for its own objects:
+  ‘bmixfit_EM’ ‘my_ggplot_theme’
+* checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.bmix
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+Parameters: no visible binding for global variable ‘name’
+Parameters: no visible binding for global variable ‘value’
+Parameters: no visible binding for global variable ‘mu’
+Parameters: no visible binding for global variable ‘rho’
+Parameters: no visible binding for global variable ‘cluster’
+Parameters: no visible binding for global variable ‘overdispersion’
+plot_clusters: no visible binding for global variable ‘Frequency’
+plot_clusters: no visible binding for global variable ‘Cluster’
+plot_clusters: no visible binding for global variable ‘..count..’
+plot_density: no visible binding for global variable ‘y’
+plot_density: no visible binding for global variable ‘component’
+plot_model_selection: no visible binding for global variable ‘B’
+plot_model_selection: no visible binding for global variable ‘BB’
+plot_model_selection: no visible binding for global variable ‘ICL’
+plot_model_selection: no visible binding for global variable ‘best’
+Undefined global functions or variables:
+  ..count.. B BB Cluster Frequency ICL best cluster component mu name
+  overdispersion rho value y
+* checking Rd files ... WARNING
+checkRd: (5) BMix.Rd:0-17: Must have a \description
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'BMix'
+  ‘libname’ ‘pkgname’
+
+Undocumented arguments in documentation object 'bmixfit'
+  ‘description’
+
+Undocumented arguments in documentation object 'plot.bmix'
+  ‘data’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+S3 methods shown with full name in documentation object 'plot.bmix':
+  ‘plot.bmix’
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘BMix-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: plot.bmix
+> ### Title: Plot a 'bmix' object.
+> ### Aliases: plot.bmix
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> # Empty plot
+> plot(x)
+Error in xy.coords(x, y, xlabel, ylabel, log) : 
+  'x' is a list, but does not have components 'x' and 'y'
+Calls: plot -> plot.default -> xy.coords
+Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+  ‘BMix.Rmd’ using ‘UTF-8’... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 ERROR, 3 WARNINGs, 4 NOTEs

@@ -10,7 +10,7 @@ bmixfit(
   K.BetaBinomials = 0,
   epsilon = 1e-08,
   samples = 2,
-  score = "ICL",
+  entropy = TRUE,
   silent = FALSE,
   description = "My BMix model"
 )
@@ -33,7 +33,9 @@ negative loglikelihood.}
 \item{samples}{Number of Expectation Maximization fits that should be computed per
 configuration of mixture.}
 
-\item{score}{The score for model selection, any of `NLL`, `BIC` or `ICL`.}
+\item{entropy}{If `FALSE`, then the entropy term from the Integrated Classification
+Likelihood is not included, and the model is then scored by the Bayesian Information
+Criterion.}
 
 \item{silent}{If `FALSE`, does not print outputs.}
 }

@@ -1,0 +1,125 @@
+---
+title: "Using BMix"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using BMix}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(BMix)
+```
+
+# Mixture models with BMix
+
+## Simulated data
+
+We generate some simple data obtained from $k=3$ Binomial mixtures with Binomial probability $p\in\{ 0.5, 0.25, 0.1\}$, drawing $300$, $700$ and $700$ samples each. The number of trials is fixed to $100$.
+
+```{r}
+data = data.frame(
+  successes = c(
+    rbinom(300, 100, .5),  # First component - 300 points, peak at 0.5
+    rbinom(700, 100, .25), # Second component - 700 points, peak at 0.25
+    rbinom(700, 100, .1)), # Third component - 700 points, peak at 0.1
+  trials = 100)
+
+print(head(data))
+```
+
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+require(ggplot2)
+
+ggplot(data, aes(successes/trials)) + geom_histogram(binwidth = 0.01) + theme_linedraw()
+```
+
+## Binomial mixtures
+
+### Fitting the data
+
+Fitting is done with function `bmixfit`, the default parameters test a number of configurations of Binomial components, but sets to $0$ the number of Beta-Binomial components. 
+```{r, warning=FALSE}
+# Default parameters
+x = bmixfit(data, K.Binomials = 1:3, K.BetaBinomials = 0)
+
+# Maybe one could compare x to this
+# y = bmixfit(data, K.Binomials = 0, K.BetaBinomials = 1:2)
+```
+
+The fit is an object of class `bmix` which has S3 methods available.
+```{r, warning=FALSE}
+print(x)
+```
+
+**Note:** The input data is not stored inside the fit, you have keep it and pass it to plotting functions. Keep it consistent, the package is not doing any checks about the input.
+
+You have getters to access the clusters (as `tibble`) and the fit parameters.
+```{r}
+# Augment data with cluster labels and latent variables
+Clusters(x, data)
+
+# Obtain for every fit component the mean and its overdispersion.
+# Binomial components have 0 overdispersion by definition.
+Parameters(x)
+```
+
+### Plotting the fits
+
+You can plot the clustering assignments (*hard clustering*).
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_clusters(x, data)
+```
+
+You can plot the density, in frequency space. For this a number of trials needs to be fixed; by default `BMix` takes the median number of trials in the input data, but you can decide to use any other interger number.
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_density(x, data)
+```
+
+You can visualise the result of the model selection grid as a heatmap; the best model is the one that minimizes the chosen score, which is by default the *Integrated Classification Likelihood*, an extension of the *Bayesian Information Criterion* that accounts for the entropy of the latent variables.
+```{r, warning=FALSE, fig.height=3, fig.width=3}
+plot_model_selection(x)
+```
+
+Then `plot` assembles all these plots using the `cowplot` package.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+BMix::plot.bmix(x, data) 
+```
+
+## Beta-Binomial mixtures
+
+If you want to test the same model with only Beta-Binomial components you can run function `bmixfit` as follows.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+# Custom parameters
+x = bmixfit(data, 
+            K.Binomials = 0, 
+            K.BetaBinomials = 1:3)
+
+# Show outputs
+print(x)
+
+BMix::plot.bmix(x, data) 
+```
+
+## Comparing mixtures
+
+
+You can compare models with both type of components.
+```{r, warning=FALSE, fig.height=3, fig.width=9}
+# Custom parameters
+x = bmixfit(data, 
+            K.Binomials = 0:3, 
+            K.BetaBinomials = 0:3)
+
+# Show outputs
+print(x)
+
+BMix::plot.bmix(x, data) 
+```

@@ -1,0 +1,191 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "BMix"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('BMix')
+Warning: replacing previous import ‘cli::num_ansi_colors’ by ‘crayon::num_ansi_colors’ when loading ‘BMix’
+Warning: replacing previous import ‘crayon::%+%’ by ‘ggplot2::%+%’ when loading ‘BMix’
+✓ Loading BMix, 'Binomial and Beta-Binomial univariate mixtures'. Support : <https://caravagn.github.io/BMix/>
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Clusters")
+> ### * Clusters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Clusters
+> ### Title: Extract clustering assignments.
+> ### Aliases: Clusters
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> Clusters(x, data)
+# A tibble: 100 x 5
+   successes trials cluster `Bin 1`       `Bin 2`
+       <int>  <dbl> <chr>     <dbl>         <dbl>
+ 1        42    100 Bin 1     1.00  0.00000129   
+ 2        37    100 Bin 1     1.00  0.00000000508
+ 3        49    100 Bin 1     0.997 0.00302      
+ 4        41    100 Bin 1     1.00  0.000000427  
+ 5        42    100 Bin 1     1.00  0.00000129   
+ 6        41    100 Bin 1     1.00  0.000000427  
+ 7        53    100 Bin 1     0.797 0.203        
+ 8        41    100 Bin 1     1.00  0.000000427  
+ 9        42    100 Bin 1     1.00  0.00000129   
+10        37    100 Bin 1     1.00  0.00000000508
+# … with 90 more rows
+> 
+> 
+> 
+> cleanEx()
+> nameEx("Parameters")
+> ### * Parameters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Parameters
+> ### Title: Extract the fit parameters of the mixture.
+> ### Aliases: Parameters
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> Parameters(x)
+# A tibble: 2 x 3
+  cluster  mean overdispersion
+  <chr>   <dbl>          <dbl>
+1 Bin 1   0.411              0
+2 Bin 2   0.694              0
+> 
+> 
+> 
+> cleanEx()
+> nameEx("bmixfit")
+> ### * bmixfit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: bmixfit
+> ### Title: Fit a 'Bmix' mixture
+> ### Aliases: bmixfit
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> print(x)
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.bmix")
+> ### * plot.bmix
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.bmix
+> ### Title: Plot a 'bmix' object.
+> ### Aliases: plot.bmix
+> 
+> ### ** Examples
+> 
+> # The same dataset used in the package vignette
+> data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
+> 
+> # BMix fit with default parameters
+> x = bmixfit(data)
+ [ BMix fit ] 
+
+ℹ Binomials k_B = 1 and 2, Beta-Binomials k_BB = 0.
+✓ Fits to run, n = 4.
+
+ℹ Bmix best fit completed in 0 mins
+
+── [ BMix ] My BMix model n = 100 with k = 2 component(s) (2 + 0) ──────────────
+● Clusters: π = 70% [Bin 2] and 30% [Bin 1], with π > 0.
+● Binomial Bin 1 with mean = 0.411482115751107.
+● Binomial Bin 2 with mean = 0.693971355613447.
+ℹ Score(s): ICL = 731.95.
+> 
+> # Empty plot
+> plot(x)
+Error in xy.coords(x, y, xlabel, ylabel, log) : 
+  'x' is a list, but does not have components 'x' and 'y'
+Calls: plot -> plot.default -> xy.coords
+Execution halted

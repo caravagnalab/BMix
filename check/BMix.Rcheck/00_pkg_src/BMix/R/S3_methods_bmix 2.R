@@ -6,9 +6,7 @@
 #' @param ... S3 parameters.
 #'
 #' @return Nothing, just print to screen some information about the mixture.
-#'
-#' @exportS3Method print bmix
-#' @export print.bmix
+#' @export
 #'
 #' @examples
 #' # The same dataset used in the package vignette
@@ -64,15 +62,14 @@ print.bmix = function(x, ...)
   cli::cli_end()
 
   # cat('\n')
-  xs = round(x[[x$score]], 2)
+  xs = round(x$ICL, 2)
 
-  cli::cli_alert_info('Score (model selection): {.field {x$score}} = {.value {xs}}.')
-
-  # if(x$use_entropy)
-  #
-  # else
-  #   cli::cli_alert_info('Score(s): BIC = {.value {xs}}.')
+  if(x$use_entropy)
+    cli::cli_alert_info('Score(s): ICL = {.value {xs}}.')
+  else
+    cli::cli_alert_info('Score(s): BIC = {.value {xs}}.')
 }
+
 
 #' Plot a \code{bmix} object.
 #'
@@ -87,12 +84,11 @@ print.bmix = function(x, ...)
 #' actual data used to compute the fit \code{x}.
 #'
 #' @return A \code{cowplot} figure.
+#' @export
 #'
-#' @exportS3Method plot bmix
-#' @export plot.bmix
+#' @import cowplot
 #'
 #' @examples
-#'
 #' # The same dataset used in the package vignette
 #' data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
 #'
@@ -104,15 +100,14 @@ print.bmix = function(x, ...)
 #'
 #' # Plot with data
 #' plot(x, data)
-plot.bmix = function(x, ...)
+plot.bmix = function(x, data, ...)
 {
   params = list(...)
 
-  if(length(params) >= 1)
+  if('data' %in% names(params))
   {
-    data = params[[1]]
-
-    f = cowplot::plot_grid(
+    data = list['data']
+    cowplot::plot_grid(
       plot_clusters(x, data),
       plot_density(x, data),
       plot_model_selection(x),
@@ -120,8 +115,6 @@ plot.bmix = function(x, ...)
       ncol = 3,
       align = 'h'
     )
-
-    return(f)
   }
 
   warning("No data given in input, returning empty plot.")

@@ -21,7 +21,7 @@ for this mixture.
 data = data.frame(successes = c(rbinom(30, 100, .4), rbinom(70, 100, .7)), trials = 100)
 
 # BMix fit
-x = bmixfit(data, K.Binomials = 1:3, K.BetaBinomials = 1:3)
+x = bmixfit(data, K.Binomials = 1:3, K.BetaBinomials = 0:3)
 
 plot_model_selection(x)
 }
