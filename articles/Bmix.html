@@ -120,12 +120,12 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;   successes trials</span>
-<span class="co">#&gt; 1        58    100</span>
-<span class="co">#&gt; 2        48    100</span>
-<span class="co">#&gt; 3        47    100</span>
-<span class="co">#&gt; 4        55    100</span>
-<span class="co">#&gt; 5        42    100</span>
-<span class="co">#&gt; 6        50    100</span></code></pre></div>
+<span class="co">#&gt; 1        44    100</span>
+<span class="co">#&gt; 2        41    100</span>
+<span class="co">#&gt; 3        53    100</span>
+<span class="co">#&gt; 4        56    100</span>
+<span class="co">#&gt; 5        53    100</span>
+<span class="co">#&gt; 6        59    100</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: ggplot2</span>
@@ -148,11 +148,11 @@
 <span class="co">#&gt; ℹ Binomials k_B = 1, 2, and 3, Beta-Binomials k_BB = 0; 6 fits to run.</span>
 <span class="co">#&gt; ℹ Bmix best fit completed in 0.03 mins</span>
 <span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (3 + 0) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 42% [Bin 1], 40% [Bin 2], and 18% [Bin 3], with π &gt; 0.</span>
-<span class="co">#&gt; ● Binomial Bin 1 with mean = 0.101248238567572.</span>
-<span class="co">#&gt; ● Binomial Bin 2 with mean = 0.252611672181229.</span>
-<span class="co">#&gt; ● Binomial Bin 3 with mean = 0.501117866816555.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12943.91.</span>
+<span class="co">#&gt; • Clusters: π = 43% [Bin 2], 39% [Bin 3], and 18% [Bin 1], with π &gt; 0.</span>
+<span class="co">#&gt; • Binomial Bin 1 with mean = 0.498643017009151.</span>
+<span class="co">#&gt; • Binomial Bin 2 with mean = 0.246587687979472.</span>
+<span class="co">#&gt; • Binomial Bin 3 with mean = 0.0959003977698066.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 13000.09.</span>
 
 <span class="co"># Maybe one could compare x to this</span>
 <span class="co"># y = bmixfit(data, K.Binomials = 0, K.BetaBinomials = 1:2)</span></code></pre></div>
@@ -160,40 +160,40 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (3 + 0) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 42% [Bin 1], 40% [Bin 2], and 18% [Bin 3], with π &gt; 0.</span>
-<span class="co">#&gt; ● Binomial Bin 1 with mean = 0.101248238567572.</span>
-<span class="co">#&gt; ● Binomial Bin 2 with mean = 0.252611672181229.</span>
-<span class="co">#&gt; ● Binomial Bin 3 with mean = 0.501117866816555.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12943.91.</span></code></pre></div>
+<span class="co">#&gt; • Clusters: π = 43% [Bin 2], 39% [Bin 3], and 18% [Bin 1], with π &gt; 0.</span>
+<span class="co">#&gt; • Binomial Bin 1 with mean = 0.498643017009151.</span>
+<span class="co">#&gt; • Binomial Bin 2 with mean = 0.246587687979472.</span>
+<span class="co">#&gt; • Binomial Bin 3 with mean = 0.0959003977698066.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 13000.09.</span></code></pre></div>
 <p><strong>Note:</strong> The input data is not stored inside the fit, you have keep it and pass it to plotting functions. Keep it consistent, the package is not doing any checks about the input.</p>
 <p>You have getters to access the clusters (as <code>tibble</code>) and the fit parameters.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Augment data with cluster labels and latent variables</span>
 <span class="fu"><a href="../reference/Clusters.html">Clusters</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1,700 x 6</span>
-<span class="co">#&gt;    successes trials cluster  `Bin 1`  `Bin 2` `Bin 3`</span>
-<span class="co">#&gt;        &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1        58    100 Bin 3   1.08e-27 2.56e-10   1.00 </span>
-<span class="co">#&gt;  2        48    100 Bin 3   1.01e-18 1.26e- 5   1.00 </span>
-<span class="co">#&gt;  3        47    100 Bin 3   7.97e-18 3.71e- 5   1.00 </span>
-<span class="co">#&gt;  4        55    100 Bin 3   5.29e-25 6.54e- 9   1.00 </span>
-<span class="co">#&gt;  5        42    100 Bin 3   2.42e-13 8.16e- 3   0.992</span>
-<span class="co">#&gt;  6        50    100 Bin 3   1.62e-20 1.45e- 6   1.00 </span>
-<span class="co">#&gt;  7        42    100 Bin 3   2.42e-13 8.16e- 3   0.992</span>
-<span class="co">#&gt;  8        50    100 Bin 3   1.62e-20 1.45e- 6   1.00 </span>
-<span class="co">#&gt;  9        56    100 Bin 3   6.71e-26 2.22e- 9   1.00 </span>
-<span class="co">#&gt; 10        52    100 Bin 3   2.60e-22 1.67e- 7   1.00 </span>
+<span class="co">#&gt;    successes trials cluster `Bin 1`  `Bin 2`  `Bin 3`</span>
+<span class="co">#&gt;        &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1        44    100 Bin 1     1.00  2.40e- 4 3.25e-18</span>
+<span class="co">#&gt;  2        41    100 Bin 1     0.992 7.69e- 3 3.04e-15</span>
+<span class="co">#&gt;  3        53    100 Bin 1     1.00  7.11e- 9 3.89e-27</span>
+<span class="co">#&gt;  4        56    100 Bin 1     1.00  2.20e-10 4.13e-30</span>
+<span class="co">#&gt;  5        53    100 Bin 1     1.00  7.11e- 9 3.89e-27</span>
+<span class="co">#&gt;  6        59    100 Bin 1     1.00  6.81e-12 4.38e-33</span>
+<span class="co">#&gt;  7        52    100 Bin 1     1.00  2.26e- 8 3.81e-26</span>
+<span class="co">#&gt;  8        50    100 Bin 1     1.00  2.30e- 7 3.66e-24</span>
+<span class="co">#&gt;  9        44    100 Bin 1     1.00  2.40e- 4 3.25e-18</span>
+<span class="co">#&gt; 10        50    100 Bin 1     1.00  2.30e- 7 3.66e-24</span>
 <span class="co">#&gt; # … with 1,690 more rows</span>
 
 <span class="co"># Obtain for every fit component the mean and its overdispersion.</span>
 <span class="co"># Binomial components have 0 overdispersion by definition.</span>
 <span class="fu"><a href="../reference/Parameters.html">Parameters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 3</span>
-<span class="co">#&gt;   cluster  mean overdispersion</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Bin 1   0.101              0</span>
-<span class="co">#&gt; 2 Bin 2   0.253              0</span>
-<span class="co">#&gt; 3 Bin 3   0.501              0</span></code></pre></div>
+<span class="co">#&gt;   cluster   mean overdispersion</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Bin 1   0.499               0</span>
+<span class="co">#&gt; 2 Bin 2   0.247               0</span>
+<span class="co">#&gt; 3 Bin 3   0.0959              0</span></code></pre></div>
 </div>
 <div id="plotting-the-fits" class="section level3">
 <h3 class="hasAnchor">
@@ -228,16 +228,16 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ── BMix fit ────────────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; ℹ Binomials k_B = 0, Beta-Binomials k_BB = 1, 2, and 3; 6 fits to run.</span>
-<span class="co">#&gt; ℹ Bmix best fit completed in 0.19 mins</span>
+<span class="co">#&gt; ℹ Bmix best fit completed in 0.2 mins</span>
 <span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (0 + 3) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 42% [BBin 3], 41% [BBin 2], and 17% [BBin 1], with π &gt; 0.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12934.6.</span>
+<span class="co">#&gt; • Clusters: π = 42% [BBin 1], 41% [BBin 2], and 17% [BBin 3], with π &gt; 0.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 12965.56.</span>
 
 <span class="co"># Show outputs</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (0 + 3) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 42% [BBin 3], 41% [BBin 2], and 17% [BBin 1], with π &gt; 0.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12934.6.</span>
+<span class="co">#&gt; • Clusters: π = 42% [BBin 1], 41% [BBin 2], and 17% [BBin 3], with π &gt; 0.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 12965.56.</span>
 
 <span class="fu">BMix</span><span class="fu">::</span><span class="fu"><a href="../reference/plot.bmix.html">plot.bmix</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">data</span><span class="op">)</span> </code></pre></div>
 <p><img src="Bmix_files/figure-html/unnamed-chunk-11-1.png" width="864"></p>
@@ -254,22 +254,16 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ── BMix fit ────────────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; ℹ Binomials k_B = 0, 1, 2, and 3, Beta-Binomials k_BB = 0, 1, 2, and 3; 12 fits to run.</span>
-<span class="co">#&gt; ℹ Bmix best fit completed in 0.19 mins</span>
-<span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (3 + 0) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 41% [Bin 1], 41% [Bin 3], and 18% [Bin 2], with π &gt; 0.</span>
-<span class="co">#&gt; ● Binomial Bin 1 with mean = 0.0995193770412299.</span>
-<span class="co">#&gt; ● Binomial Bin 2 with mean = 0.499837969133381.</span>
-<span class="co">#&gt; ● Binomial Bin 3 with mean = 0.25010451257257.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12920.21.</span>
+<span class="co">#&gt; ℹ Bmix best fit completed in 0.24 mins</span>
+<span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (0 + 3) ─────────────</span>
+<span class="co">#&gt; • Clusters: π = 42% [BBin 3], 41% [BBin 1], and 18% [BBin 2], with π &gt; 0.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 13017.76.</span>
 
 <span class="co"># Show outputs</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (3 + 0) ─────────────</span>
-<span class="co">#&gt; ● Clusters: π = 41% [Bin 1], 41% [Bin 3], and 18% [Bin 2], with π &gt; 0.</span>
-<span class="co">#&gt; ● Binomial Bin 1 with mean = 0.0995193770412299.</span>
-<span class="co">#&gt; ● Binomial Bin 2 with mean = 0.499837969133381.</span>
-<span class="co">#&gt; ● Binomial Bin 3 with mean = 0.25010451257257.</span>
-<span class="co">#&gt; ℹ Score (model selection): ICL = 12920.21.</span>
+<span class="co">#&gt; ── [ BMix ] My BMix model n = 1700 with k = 3 component(s) (0 + 3) ─────────────</span>
+<span class="co">#&gt; • Clusters: π = 42% [BBin 3], 41% [BBin 1], and 18% [BBin 2], with π &gt; 0.</span>
+<span class="co">#&gt; ℹ Score (model selection): ICL = 13017.76.</span>
 
 <span class="fu">BMix</span><span class="fu">::</span><span class="fu"><a href="../reference/plot.bmix.html">plot.bmix</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">data</span><span class="op">)</span> </code></pre></div>
 <p><img src="Bmix_files/figure-html/unnamed-chunk-12-1.png" width="864"></p>
