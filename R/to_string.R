@@ -52,10 +52,11 @@ to_string = function(x)
       K_BB = x$K[2],
       K = sum(x$K),
       x$pi %>% as.data.frame %>% t %>% rn(n = "Pi"),
+      NLL = x$NLL,
       ICL = x$ICL,
       BIC = x$BIC,
       entropy = x$entropy,
-      use_entropy = x$use_entropy
+      score = x$score
     )
 
   if(x$K[1] > 0) df = cbind(df, Bm)
