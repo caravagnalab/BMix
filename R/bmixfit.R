@@ -140,7 +140,7 @@ bmixfit = function(data,
                                     `BIC` = sapply(results, function(x) x$BIC),
                                     `ICL` = sapply(results, function(x) x$ICL))
 
-  print(best)
+  if(!silent) print(best)
 
   # for(i in 1:nrow(grid))
   # {
