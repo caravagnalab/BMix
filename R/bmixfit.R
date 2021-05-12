@@ -58,8 +58,11 @@ bmixfit = function(data,
                    silent = FALSE,
                    description = "My BMix model")
 {
-  cli::cli_h1("BMix fit")
-  cat('\n')
+  if(!silent)
+  {
+    cli::cli_h1("BMix fit")
+    cat('\n')
+  }
 
   B_grid = expand.grid(
     Sample = 1:samples,
@@ -123,14 +126,17 @@ bmixfit = function(data,
   # Report timing to screen
   TIME = difftime(as.POSIXct(Sys.time(), format = "%H:%M:%S"), TIME, units = "mins")
 
-  cat('\n')
-  cli::cli_alert_info(paste(
-    crayon::bold("Bmix best fit"),
-    'completed in',
-    round(TIME, 2),
-    'mins'
-  ))
-  cat('\n')
+  if(!silent)
+  {
+    cat('\n')
+    cli::cli_alert_info(paste(
+      crayon::bold("Bmix best fit"),
+      'completed in',
+      round(TIME, 2),
+      'mins'
+    ))
+    cat('\n')
+  }
 
   best = results[[which.min(sapply(results, function(x) x[[score]]))]]
   best$description = description
