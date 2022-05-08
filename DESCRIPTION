@@ -1,7 +1,7 @@
 Package: BMix
 Type: Package
 Title: BMix - Binomial and Beta-Binomial univariate mixtures
-Version: 0.1.0
+Version: 1.0.0
 Author: Giulio Caravagna
 Maintainer: Giulio Caravagna <gcaravagn@gmail.com>
 Authors@R: person("Giulio", "Caravagna", role = c("aut", "cre"), email = "gcaravagn@gmail.com")
