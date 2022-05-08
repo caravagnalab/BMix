@@ -31,5 +31,6 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-URL: https://github.com/caravagnalab/BMix
+URL: https://github.com/caravagnalab/BMix,
+    https://caravagnalab.github.io/BMix/
 BugReports: https://github.com/caravagnalab/BMix/issues

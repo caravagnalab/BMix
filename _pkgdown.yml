@@ -1,1 +1,4 @@
-destination: docs
+url: https://caravagnalab.github.io/BMix/
+template:
+  bootstrap: 5
+
