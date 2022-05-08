@@ -9,7 +9,7 @@ Description: BMix provides univariate Binomial and Beta-Binomial mixture models.
     mixtures by maximum likelihood via the Expectation Maximization algorithm. Model selection 
     for the number of mixture components is by the Integrated Classification Likelihood, an 
     extension of the Bayesian Information Criterion that accounts for the entropy of the latent variables.
-License: GPL
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
